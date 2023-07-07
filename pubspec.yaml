@@ -47,6 +47,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_localizations:
     sdk: flutter
+  font_awesome_flutter: ^10.5.0
+  google_fonts: ^5.1.0
 
 dev_dependencies:
   flutter_test:
@@ -100,3 +102,20 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: M_Plus_Rounded
+      fonts:
+        - asset: assets/fonts/M_Plus_Rounded_1c/MPlusRounded1c-Thin.ttf
+          weight: 100
+        - asset: assets/fonts/M_Plus_Rounded_1c/MPlusRounded1c-Light.ttf
+          weight: 300
+        - asset: assets/fonts/M_Plus_Rounded_1c/MPlusRounded1c-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/M_Plus_Rounded_1c/MPlusRounded1c-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/M_Plus_Rounded_1c/MPlusRounded1c-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/M_Plus_Rounded_1c/MPlusRounded1c-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/M_Plus_Rounded_1c/MPlusRounded1c-Black.ttf
+          weight: 900

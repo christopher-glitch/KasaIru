@@ -13,7 +13,8 @@ class HomePage extends ConsumerWidget {
     final forecastResponse = ref.watch(forecastResponseProvider("大岡山"));
     return Scaffold(
         appBar: const Header(),
-        backgroundColor: const Color.fromARGB(255, 22, 95, 254),
+        //backgroundColor: const Color.fromARGB(255, 22, 95, 254),
+        backgroundColor: Colors.white,
         body: SafeArea(
             child: forecastResponse.when(
             data: (data) {

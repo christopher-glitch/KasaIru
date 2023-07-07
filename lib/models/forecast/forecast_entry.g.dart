@@ -21,9 +21,9 @@ _$_ForecastEntry _$$_ForecastEntryFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_ForecastEntryToJson(_$_ForecastEntry instance) =>
     <String, dynamic>{
-      'main': instance.main,
-      'weather': instance.weather,
-      'rain': instance.rain,
+      'main': instance.main.toJson(),
+      'weather': instance.weather.map((e) => e.toJson()).toList(),
+      'rain': instance.rain?.toJson(),
       'pop': instance.pop,
       'dt_txt': instance.dt,
     };

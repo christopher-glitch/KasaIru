@@ -122,12 +122,12 @@ BoxedIcon getWeatherIcon(int id){
                 size: size,
               );
     case 800:
+    case 801:
+    case 802:
       return const BoxedIcon(
         WeatherIcons.day_sunny,
         size: size,
       );
-    case 801:
-    case 802:
     case 803:
     case 804:
       return const BoxedIcon(
@@ -136,7 +136,7 @@ BoxedIcon getWeatherIcon(int id){
       );
     default:
       return const BoxedIcon(
-                WeatherIcons.na,
+                WeatherIcons.cloud,
                 size: size,
               );
   }

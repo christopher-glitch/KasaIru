@@ -23,8 +23,7 @@ mixin _$ForecastEntry {
   MainInfo get main => throw _privateConstructorUsedError;
   List<WeatherInfo> get weather => throw _privateConstructorUsedError;
   RainInfo? get rain => throw _privateConstructorUsedError;
-  double get pop =>
-      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  double get pop => throw _privateConstructorUsedError;
   @JsonKey(name: "dt_txt")
   String get dt => throw _privateConstructorUsedError;
 
@@ -179,7 +178,8 @@ class __$$_ForecastEntryCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$_ForecastEntry implements _ForecastEntry {
   const _$_ForecastEntry(
       {required this.main,
@@ -206,7 +206,6 @@ class _$_ForecastEntry implements _ForecastEntry {
   final RainInfo? rain;
   @override
   final double pop;
-// ignore: invalid_annotation_target
   @override
   @JsonKey(name: "dt_txt")
   final String dt;
@@ -266,7 +265,7 @@ abstract class _ForecastEntry implements ForecastEntry {
   RainInfo? get rain;
   @override
   double get pop;
-  @override // ignore: invalid_annotation_target
+  @override
   @JsonKey(name: "dt_txt")
   String get dt;
   @override

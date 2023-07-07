@@ -18,9 +18,9 @@ RainInfo _$RainInfoFromJson(Map<String, dynamic> json) {
   return _RainInfo.fromJson(json);
 }
 
-// ignore: duplicate_ignore
 /// @nodoc
 mixin _$RainInfo {
+// ignore: invalid_annotation_target
   @JsonKey(name: '3h')
   double get amount => throw _privateConstructorUsedError;
 

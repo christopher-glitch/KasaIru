@@ -19,7 +19,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           brightness: Brightness.light,
-          primaryColor: const Color.fromARGB(255, 29, 104, 255),
           fontFamily: 'NotoSansJP'),
       home: HomePage(),
       localizationsDelegates: const [
