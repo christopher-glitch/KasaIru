@@ -6,6 +6,7 @@ part of 'forecast_entry.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+// ignore: non_constant_identifier_names
 _$_ForecastEntry _$$_ForecastEntryFromJson(Map<String, dynamic> json) =>
     _$_ForecastEntry(
       main: MainInfo.fromJson(json['main'] as Map<String, dynamic>),
@@ -19,6 +20,7 @@ _$_ForecastEntry _$$_ForecastEntryFromJson(Map<String, dynamic> json) =>
       dt: json['dt_txt'] as String,
     );
 
+// ignore: non_constant_identifier_names
 Map<String, dynamic> _$$_ForecastEntryToJson(_$_ForecastEntry instance) =>
     <String, dynamic>{
       'main': instance.main.toJson(),

@@ -21,10 +21,10 @@ MainInfo _$MainInfoFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$MainInfo {
   double get temp =>
-      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+      throw _privateConstructorUsedError; 
   @JsonKey(name: 'temp_min')
   double get tempMin =>
-      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+      throw _privateConstructorUsedError; 
   @JsonKey(name: 'temp_max')
   double get tempMax => throw _privateConstructorUsedError;
 
@@ -137,11 +137,9 @@ class _$_MainInfo implements _MainInfo {
 
   @override
   final double temp;
-// ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'temp_min')
   final double tempMin;
-// ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'temp_max')
   final double tempMax;
@@ -189,10 +187,10 @@ abstract class _MainInfo implements MainInfo {
 
   @override
   double get temp;
-  @override // ignore: invalid_annotation_target
+  @override 
   @JsonKey(name: 'temp_min')
   double get tempMin;
-  @override // ignore: invalid_annotation_target
+  @override 
   @JsonKey(name: 'temp_max')
   double get tempMax;
   @override

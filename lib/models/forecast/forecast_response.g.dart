@@ -6,6 +6,7 @@ part of 'forecast_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+// ignore: non_constant_identifier_names
 _$_ForecastResponse _$$_ForecastResponseFromJson(Map<String, dynamic> json) =>
     _$_ForecastResponse(
       list: (json['list'] as List<dynamic>)
@@ -14,6 +15,7 @@ _$_ForecastResponse _$$_ForecastResponseFromJson(Map<String, dynamic> json) =>
       city: CityInfo.fromJson(json['city'] as Map<String, dynamic>),
     );
 
+// ignore: non_constant_identifier_names
 Map<String, dynamic> _$$_ForecastResponseToJson(_$_ForecastResponse instance) =>
     <String, dynamic>{
       'list': instance.list,

@@ -5,6 +5,6 @@ String ustToJST(String ust) {
   initializeDateFormatting("ja_JP");
   DateTime ustTime = DateTime.parse(ust);
   DateTime jstTime = ustTime.add(const Duration(hours: 9));
-  var formatt = DateFormat("M月d日, HH:mm", "ja_JP");
+  var formatt = DateFormat("M/d HH:mm", "ja_JP");
   return formatt.format(jstTime);
 }

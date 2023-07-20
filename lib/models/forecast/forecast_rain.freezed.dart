@@ -20,7 +20,6 @@ RainInfo _$RainInfoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$RainInfo {
-// ignore: invalid_annotation_target
   @JsonKey(name: '3h')
   double get amount => throw _privateConstructorUsedError;
 
@@ -102,7 +101,6 @@ class _$_RainInfo implements _RainInfo {
   factory _$_RainInfo.fromJson(Map<String, dynamic> json) =>
       _$$_RainInfoFromJson(json);
 
-// ignore: invalid_annotation_target
   @override
   @JsonKey(name: '3h')
   final double amount;
@@ -144,7 +142,7 @@ abstract class _RainInfo implements RainInfo {
 
   factory _RainInfo.fromJson(Map<String, dynamic> json) = _$_RainInfo.fromJson;
 
-  @override // ignore: invalid_annotation_target
+  @override 
   @JsonKey(name: '3h')
   double get amount;
   @override

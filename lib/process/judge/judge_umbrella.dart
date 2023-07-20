@@ -7,10 +7,13 @@ class JudgeUmbrella {
   static const messageUmbrella = "傘を使う可能性があります";
   static const messageNoUmbrella = "傘を使う必要はありません";
 
-  double popThreshold = 0.5;
-  int hourThreshold = 12;
+  ResultJudge judgeTakeUmbrella(
+      List<ForecastEntry> entry, List<int> settingRainJudge) {
+    double popThreshold = settingRainJudge[0] / 100;
+    int hourThreshold = settingRainJudge[1];
 
-  ResultJudge judgeTakeUmbrella(List<ForecastEntry> entry) {
+    //debugPrint(popThreshold.toString());
+
     int surveytime = 0;
     int sunny = 0;
     bool umbrella = false;
@@ -36,7 +39,7 @@ class JudgeUmbrella {
     //雨
     if (umbrella) {
       return ResultJudge(
-          icon: const BoxedIcon(WeatherIcons.rain, size: 100),
+          icon: const BoxedIcon(WeatherIcons.umbrella, size: 100),
           message: const Text(messageUmbrella,
               style: TextStyle(
                   color: Color.fromARGB(255, 137, 9, 0),

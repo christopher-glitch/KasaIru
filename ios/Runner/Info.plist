@@ -51,5 +51,11 @@
 	<array>
   <string>ja</string>
 	</array>
+	<!-- geolocator Section -->
+  <key>NSLocationWhenInUseUsageDescription</key>
+  <string>Required to post location information when fetching weather data.</string>
+  <key>NSLocationAlwaysUsageDescription</key>
+  <string>Required to post location information when fetching weather data.</string>
+  <!-- End of the geolocator Section -->
 </dict>
 </plist>

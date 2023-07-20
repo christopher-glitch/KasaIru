@@ -1,0 +1,56 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:umbrella/pages/loading/loading.dart';
+import 'package:umbrella/pages/weather/weather_ui.dart';
+import 'package:umbrella/pages/weather/weather_header.dart';
+import 'package:umbrella/provider/search_provider.dart';
+import 'package:umbrella/provider/weather_provider.dart';
+
+import '../error/error.dart';
+
+class WeatherScreen extends ConsumerStatefulWidget {
+  const WeatherScreen({super.key});
+
+  @override
+  ConsumerState<ConsumerStatefulWidget> createState() => WeatherScreenState();
+}
+
+class WeatherScreenState extends ConsumerState {
+  @override
+  void initState() {
+    super.initState();
+    init();
+  }
+
+  Future<void> init() async {
+    var serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (serviceEnabled) {
+      final geolocator = GeolocatorPlatform.instance;
+      final position = await geolocator.getCurrentPosition();
+      List<double> locinit = [position.latitude, position.longitude];
+      ref.read(searchNameProvider.notifier).state = "現在地";
+      ref.read(searchLocProvider.notifier).state = locinit;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final forecastResponse = ref.watch(forecastResponseProvider);
+    return Scaffold(
+        appBar: const WeatherScreenHeader(),
+        backgroundColor: Colors.white,
+        body: SafeArea(
+            child: forecastResponse.when(
+          data: (data) {
+            return WeatherUI(entry: data.list);
+          },
+          loading: () {
+            return const LoadingUI();
+          },
+          error: (error, stackTrace) {
+            return ErrorUI(error: error);
+          },
+        )));
+  }
+}

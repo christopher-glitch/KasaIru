@@ -1,10 +1,11 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:umbrella/models/forecast/forecast_response.dart';
+import 'package:umbrella/provider/search_provider.dart';
 import 'package:umbrella/service/weather_api.dart';
 
-final forecastResponseProvider =
-    FutureProvider.family<ForecastResponse, String>((ref, keyword) async {
+final forecastResponseProvider = FutureProvider.autoDispose((ref) async {
   final forecastApiClient = ForecastApiClient();
-  final forecastResponse = forecastApiClient.fetchWeather(keyword);
+  final result = ref.watch(searchLocProvider);
+
+  final forecastResponse = forecastApiClient.fetchWeather(result);
   return forecastResponse;
 });
