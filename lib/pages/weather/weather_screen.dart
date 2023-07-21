@@ -37,13 +37,24 @@ class WeatherScreenState extends ConsumerState {
   @override
   Widget build(BuildContext context) {
     final forecastResponse = ref.watch(forecastResponseProvider);
+    final weatherResponse = ref.watch(weatherResponseProvider);
     return Scaffold(
         appBar: const WeatherScreenHeader(),
         backgroundColor: Colors.white,
         body: SafeArea(
-            child: forecastResponse.when(
-          data: (data) {
-            return WeatherUI(entry: data.list);
+          child: forecastResponse.when(
+          data: (forecast) {
+            return weatherResponse.when(
+              data: (weather) {
+                return WeatherUI(weatherResponse: weather, entry: forecast.list);
+              },
+              loading: () {
+                return const LoadingUI();
+              },
+              error: (error, stackTrace) {
+                return ErrorUI(error: error);
+              },
+            );
           },
           loading: () {
             return const LoadingUI();

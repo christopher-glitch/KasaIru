@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 import 'package:umbrella/models/forecast/forecast_entry.dart';
+import 'package:umbrella/models/weather/weather_response.dart';
 import 'package:umbrella/process/util/ust_to_jst.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:umbrella/provider/search_provider.dart';
@@ -10,26 +12,36 @@ import 'package:umbrella/service/forecast_icon.dart';
 import '../../process/judge/judge_umbrella.dart';
 
 class WeatherUI extends ConsumerWidget {
+  final WeatherResponse weatherResponse;
   final List<ForecastEntry> entry;
 
-  const WeatherUI({required this.entry, super.key});
+  const WeatherUI(
+      {required this.weatherResponse, required this.entry, super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var judge = JudgeUmbrella();
     List<int> settingRainJudge = ref.watch(settingsProvider);
-    var result = judge.judgeTakeUmbrella(entry, settingRainJudge);
+    var result = judgeTakeUmbrella(weatherResponse, entry, settingRainJudge);
 
     Size size = MediaQuery.of(context).size;
     String location = ref.watch(searchNameProvider);
 
     List<Widget> forecastList = [];
 
+    forecastList.add(buildForecast(
+        DateFormat("M/d HH:mm").format(DateTime.now()),
+        weatherResponse.main.temp.toInt(),
+        null,
+        weatherResponse.rain?.amount,
+        weatherResponse.weather[0].id,
+        size));
+
     for (int i = 0; i < 16; i++) {
       forecastList.add(buildForecast(
           ustToJST(entry[i].dt),
           entry[i].main.temp.toInt(),
           ((entry[i].pop) * 100).toInt(),
+          entry[i].rain?.amount,
           entry[i].weather[0].id,
           size));
     }
@@ -107,8 +119,11 @@ class WeatherUI extends ConsumerWidget {
             ]))));
   }
 
-  Widget buildForecast(String time, int temp, int rainChance, int id, size) {
+  Widget buildForecast(String time, int temp, int? rainChance,
+      double? rainAmount, int id, size) {
     temp -= 273;
+
+    double amount = (rainAmount != null) ? rainAmount : 0;
 
     return Padding(
       padding: EdgeInsets.all(size.width * 0.025),
@@ -152,13 +167,22 @@ class WeatherUI extends ConsumerWidget {
               ),
             ],
           ),
+          if (rainChance != null)
+            Text(
+              '$rainChance %',
+              style: GoogleFonts.questrial(
+                color: Colors.blue,
+                fontSize: size.height * 0.02,
+              ),
+            ),
           Text(
-            '$rainChance %',
+            '$amount mm',
             style: GoogleFonts.questrial(
               color: Colors.blue,
-              fontSize: size.height * 0.02,
+              fontSize: size.height * 0.017,
             ),
           ),
+          if (rainChance == null) SizedBox(height: size.height * 0.02),
         ],
       ),
     );

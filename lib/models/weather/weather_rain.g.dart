@@ -1,19 +1,19 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'forecast_rain.dart';
+part of 'weather_rain.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
 // ignore: non_constant_identifier_names
-_$_RainInfoForecast _$$_RainInfoForecastFromJson(Map<String, dynamic> json) =>
-    _$_RainInfoForecast(
-      amount: (json['3h'] as num).toDouble(),
+_$_RainInfoWeather _$$_RainInfoWeatherFromJson(Map<String, dynamic> json) =>
+    _$_RainInfoWeather(
+      amount: (json['1h'] as num).toDouble(),
     );
 
 // ignore: non_constant_identifier_names
-Map<String, dynamic> _$$_RainInfoForecastToJson(_$_RainInfoForecast instance) =>
+Map<String, dynamic> _$$_RainInfoWeatherToJson(_$_RainInfoWeather instance) =>
     <String, dynamic>{
-      '3h': instance.amount,
+      '1h': instance.amount,
     };

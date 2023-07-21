@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'forecast_main.freezed.dart';
-part 'forecast_main.g.dart';
+part 'info_main.freezed.dart';
+part 'info_main.g.dart';
 
 @freezed
 class MainInfo with _$MainInfo{

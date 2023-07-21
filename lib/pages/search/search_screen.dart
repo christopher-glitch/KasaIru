@@ -31,7 +31,7 @@ class SearchScreenState extends ConsumerState {
     focus.dispose();
   }
 
-  void _forecastSearch(AutocompletePrediction pred) async {
+  Future<void> _forecastSearch(AutocompletePrediction pred) async {
     final placeId = pred.placeId!;
     final details = await googlePlace.details.get(placeId, language: "ja");
     if (details != null && details.result != null && mounted) {
@@ -82,7 +82,9 @@ class SearchScreenState extends ConsumerState {
                           title: Text(pred.description.toString()),
                           minLeadingWidth: 4.0,
                           onTap: () async {
-                            _forecastSearch(pred);
+                            debugPrint('tap');
+                            await _forecastSearch(pred);
+                            if (!mounted) return;
                             Navigator.pop(context);
                           },
                         )));
