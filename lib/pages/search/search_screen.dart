@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kasairu/pages/search/search_header.dart';
+import 'package:kasairu/provider/placeapi_provider.dart';
 import 'package:kasairu/provider/prediction_provider.dart';
 import 'package:google_place/google_place.dart';
 import 'package:kasairu/provider/search_provider.dart';
@@ -14,14 +14,11 @@ class SearchScreen extends ConsumerStatefulWidget {
 }
 
 class SearchScreenState extends ConsumerState {
-  late GooglePlace googlePlace;
-
   late FocusNode focus;
 
   @override
   void initState() {
     super.initState();
-    googlePlace = GooglePlace(dotenv.get("GOOGLE_API"));
     focus = FocusNode();
   }
 
@@ -33,7 +30,9 @@ class SearchScreenState extends ConsumerState {
 
   Future<void> _forecastSearch(AutocompletePrediction pred) async {
     final placeId = pred.placeId!;
-    final details = await googlePlace.details.get(placeId, language: "ja");
+    final api = ref.watch(placeAPIProvider);
+
+    final details = await api.getAPI().details.get(placeId, language: "ja");
     if (details != null && details.result != null && mounted) {
       debugPrint(details.result!.name);
       var lat = details.result!.geometry!.location!.lat;

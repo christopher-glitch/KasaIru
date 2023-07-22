@@ -8,7 +8,6 @@ import 'package:http/http.dart' as http;
 
 // APIを呼び出し、データを取得する
 class OpenWeatherApiClient {
-  
   Future<ForecastResponse> fetchForecast(List<double> loc) async {
     APIQuery apiQuery = APIQuery();
     final uri = await apiQuery.openForecastQuery(loc);

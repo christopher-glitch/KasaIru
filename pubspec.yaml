@@ -29,7 +29,6 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   build_runner: ^2.4.5
-  dio: ^4.0.4
   intl: ^0.18.0
   flutter_keyboard_visibility: ^5.2.0
   flutter_riverpod: ^1.0.3
@@ -40,8 +39,6 @@ dependencies:
   geolocator: ^9.0.2
   http: ^0.13.3
   weather_icons: ^3.0.0
-  latlng: ^1.0.0
-  marquee: any
   google_maps_flutter: ^2.3.1
   google_place: ^0.4.7
   flutter_dotenv: ^5.0.2
