@@ -49,3 +49,10 @@ app.*.map.json
 
 .env
 env.json
+
+*.jks
+
+macos/
+linux/
+web/
+windows/
