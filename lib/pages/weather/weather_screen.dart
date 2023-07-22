@@ -42,17 +42,18 @@ class WeatherScreenState extends ConsumerState {
         appBar: const WeatherScreenHeader(),
         backgroundColor: Colors.white,
         body: SafeArea(
-          child: forecastResponse.when(
+            child: forecastResponse.when(
           data: (forecast) {
             return weatherResponse.when(
               data: (weather) {
-                return WeatherUI(weatherResponse: weather, entry: forecast.list);
+                return WeatherUI(
+                    weatherResponse: weather, entry: forecast.list);
               },
               loading: () {
                 return const LoadingUI();
               },
               error: (error, stackTrace) {
-                return ErrorUI(error: error);
+                return ErrorUI(error: error, cause: 'weather');
               },
             );
           },
@@ -60,7 +61,7 @@ class WeatherScreenState extends ConsumerState {
             return const LoadingUI();
           },
           error: (error, stackTrace) {
-            return ErrorUI(error: error);
+            return ErrorUI(error: error, cause: 'forecast');
           },
         )));
   }
