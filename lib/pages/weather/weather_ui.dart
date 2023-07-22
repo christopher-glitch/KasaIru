@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:umbrella/models/forecast/forecast_entry.dart';
-import 'package:umbrella/models/weather/weather_response.dart';
-import 'package:umbrella/process/util/ust_to_jst.dart';
+import 'package:kasairu/models/forecast/forecast_entry.dart';
+import 'package:kasairu/models/weather/weather_response.dart';
+import 'package:kasairu/process/util/ust_to_jst.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:umbrella/provider/search_provider.dart';
-import 'package:umbrella/provider/settings_provider.dart';
-import 'package:umbrella/service/forecast_icon.dart';
+import 'package:kasairu/provider/search_provider.dart';
+import 'package:kasairu/provider/settings_provider.dart';
+import 'package:kasairu/service/forecast_icon.dart';
 
 import '../../process/judge/judge_umbrella.dart';
 

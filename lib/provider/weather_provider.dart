@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:umbrella/provider/search_provider.dart';
-import 'package:umbrella/service/weather_api.dart';
+import 'package:kasairu/provider/search_provider.dart';
+import 'package:kasairu/service/weather_api.dart';
 
 final forecastResponseProvider = FutureProvider.autoDispose((ref) async {
   final apiClient = ApiClient();

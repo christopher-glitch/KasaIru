@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_place/google_place.dart';
-import 'package:umbrella/provider/prediction_provider.dart';
+import 'package:kasairu/provider/prediction_provider.dart';
 
 class SearchScreenHeader extends ConsumerStatefulWidget
     implements PreferredSizeWidget {

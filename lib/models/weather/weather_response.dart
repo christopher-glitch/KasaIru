@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:umbrella/models/weather/weather_rain.dart';
+import 'package:kasairu/models/weather/weather_rain.dart';
 
 import '../common/info_main.dart';
 import '../common/info_weather.dart';

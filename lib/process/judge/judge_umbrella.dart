@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:umbrella/models/weather/weather_response.dart';
-import 'package:umbrella/process/judge/result_judge.dart';
-import 'package:umbrella/models/forecast/forecast_entry.dart';
+import 'package:kasairu/models/weather/weather_response.dart';
+import 'package:kasairu/process/judge/result_judge.dart';
+import 'package:kasairu/models/forecast/forecast_entry.dart';
 import 'package:weather_icons/weather_icons.dart';
 
 const messageUmbrella = "傘を使う可能性があります";

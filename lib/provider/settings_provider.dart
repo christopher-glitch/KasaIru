@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:umbrella/settings/settings_notifier.dart';
-import 'package:umbrella/settings/settings_repository.dart';
+import 'package:kasairu/settings/settings_notifier.dart';
+import 'package:kasairu/settings/settings_repository.dart';
 
 final settingsRepositoryProvider = Provider<SettingsRepository>((ref) => SettingsRepository());
 final settingsProvider = StateNotifierProvider<SettingsNotifier, List<int>>((ref) {

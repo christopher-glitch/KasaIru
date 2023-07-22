@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:umbrella/pages/loading/loading.dart';
-import 'package:umbrella/pages/weather/weather_ui.dart';
-import 'package:umbrella/pages/weather/weather_header.dart';
-import 'package:umbrella/provider/search_provider.dart';
-import 'package:umbrella/provider/weather_provider.dart';
+import 'package:kasairu/pages/loading/loading.dart';
+import 'package:kasairu/pages/weather/weather_ui.dart';
+import 'package:kasairu/pages/weather/weather_header.dart';
+import 'package:kasairu/provider/search_provider.dart';
+import 'package:kasairu/provider/weather_provider.dart';
 
 import '../error/error.dart';
 

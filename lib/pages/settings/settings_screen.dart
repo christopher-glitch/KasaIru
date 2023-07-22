@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:umbrella/pages/settings/settings_header.dart';
+import 'package:kasairu/pages/settings/settings_header.dart';
 import 'package:settings_ui/settings_ui.dart';
 
 import '../../provider/settings_provider.dart';
