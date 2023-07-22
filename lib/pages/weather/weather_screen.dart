@@ -17,6 +17,8 @@ class WeatherScreen extends ConsumerStatefulWidget {
 }
 
 class WeatherScreenState extends ConsumerState {
+  bool isInitLoading = true;
+
   @override
   void initState() {
     super.initState();
@@ -32,13 +34,22 @@ class WeatherScreenState extends ConsumerState {
       ref.read(searchNameProvider.notifier).state = "現在地";
       ref.read(searchLocProvider.notifier).state = locinit;
     }
+    setState(() {
+      isInitLoading = false;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     final forecastResponse = ref.watch(forecastResponseProvider);
     final weatherResponse = ref.watch(weatherResponseProvider);
-    return Scaffold(
+    if (isInitLoading) {
+      return const Scaffold(
+          appBar: WeatherScreenHeader(),
+          backgroundColor: Colors.white,
+          body: SafeArea(child: LoadingUI()));
+    } else {
+      return Scaffold(
         appBar: const WeatherScreenHeader(),
         backgroundColor: Colors.white,
         body: SafeArea(
@@ -53,6 +64,7 @@ class WeatherScreenState extends ConsumerState {
                 return const LoadingUI();
               },
               error: (error, stackTrace) {
+                debugPrintStack(stackTrace: stackTrace);
                 return ErrorUI(error: error, cause: 'weather');
               },
             );
@@ -61,8 +73,26 @@ class WeatherScreenState extends ConsumerState {
             return const LoadingUI();
           },
           error: (error, stackTrace) {
+            debugPrintStack(stackTrace: stackTrace);
             return ErrorUI(error: error, cause: 'forecast');
           },
-        )));
+        )),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            ref.refresh(forecastResponseProvider);
+            ref.refresh(weatherResponseProvider);
+          },
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16.0), 
+          ),
+          backgroundColor: const Color.fromARGB(255, 213, 213, 213),
+          child: const Icon(
+            Icons.refresh,
+            size: 30,
+            color: Colors.black,
+          ),
+        ),
+      );
+    }
   }
 }

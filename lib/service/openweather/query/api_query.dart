@@ -1,5 +1,3 @@
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-
 class APIQuery {
   static const host = "https://api.openweathermap.org";
   static const pathForecast = "/data/2.5/forecast";

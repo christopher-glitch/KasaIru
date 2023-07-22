@@ -1,16 +1,20 @@
-# umbrella
+# KasaIru
 
-A new Flutter project.
+傘の必要性に特化したモバイルアプリケーション
 
-## Getting Started
+## 対応OS
 
-This project is a starting point for a Flutter application.
+* Android
+* iOS
+  
+## 機能
 
-A few resources to get you started if this is your first Flutter project:
+* 〇〇時間後までの現在地および検索した地域の傘の必要性を降水確率から提示
+* その地域のこれからの天気を表示
+* 傘の必要性に使用するパラメータの調整
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 使用技術
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+* Flutter(Dart)
+* Google Places API
+* Open Weather API
