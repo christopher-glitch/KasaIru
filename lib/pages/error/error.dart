@@ -29,7 +29,7 @@ class ErrorUI extends StatelessWidget {
                       fontFamily: 'M_Plus_Rounded',
                       fontWeight: FontWeight.bold)),
               const SizedBox(height: 5),
-              Text('<cause>${error.toString()}',
+              Text(error.toString(),
                   style: const TextStyle(fontSize: 15)),
             ]))));
   }

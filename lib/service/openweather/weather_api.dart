@@ -3,11 +3,12 @@ import 'dart:convert';
 
 import 'package:kasairu/models/forecast/forecast_response.dart';
 import 'package:kasairu/models/weather/weather_response.dart';
-import 'package:kasairu/service/query/api_query.dart';
+import 'package:kasairu/service/openweather/query/api_query.dart';
 import 'package:http/http.dart' as http;
 
 // APIを呼び出し、データを取得する
-class ApiClient {
+class OpenWeatherApiClient {
+  
   Future<ForecastResponse> fetchForecast(List<double> loc) async {
     APIQuery apiQuery = APIQuery();
     final uri = await apiQuery.openForecastQuery(loc);

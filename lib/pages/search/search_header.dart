@@ -1,10 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_place/google_place.dart';
 import 'package:kasairu/provider/prediction_provider.dart';
+import 'package:kasairu/service/google/place_api.dart';
 
 class SearchScreenHeader extends ConsumerStatefulWidget
     implements PreferredSizeWidget {
@@ -21,17 +20,17 @@ class SearchScreenHeader extends ConsumerStatefulWidget
 class SearchScreenHeaderState extends ConsumerState {
   final _searchController = TextEditingController(text: "");
 
-  late GooglePlace googlePlace;
+  late PlaceAPIClient api;
   Timer? debounce;
 
   @override
   void initState() {
     super.initState();
-    googlePlace = GooglePlace(dotenv.get("GOOGLE_API"));
+    api = PlaceAPIClient();
   }
 
   void _autocomplete(text) async {
-    var result = await googlePlace.autocomplete.get(text);
+    var result = await api.getAPI().autocomplete.get(text);
     if (result != null && result.predictions != null && mounted) {
       ref.read(predictionProvider.notifier).state = result.predictions!;
     }

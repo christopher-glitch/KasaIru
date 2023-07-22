@@ -6,7 +6,7 @@ import 'package:kasairu/process/util/time_util.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kasairu/provider/search_provider.dart';
 import 'package:kasairu/provider/settings_provider.dart';
-import 'package:kasairu/service/forecast_icon.dart';
+import 'package:kasairu/process/util/forecast_icon.dart';
 
 import '../../process/judge/judge_umbrella.dart';
 
