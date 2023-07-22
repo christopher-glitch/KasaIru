@@ -1,6 +1,7 @@
+import 'package:kasairu/process/util/time_util.dart';
 import 'package:weather_icons/weather_icons.dart';
 
-BoxedIcon getWeatherIcon(int id, {double size = 100}) {
+BoxedIcon getWeatherIcon(int id, DateTime time, {double size = 100}) {
   switch (id) {
     case 200:
     case 201:
@@ -83,10 +84,17 @@ BoxedIcon getWeatherIcon(int id, {double size = 100}) {
     case 800:
     case 801:
     case 802:
-      return BoxedIcon(
-        WeatherIcons.day_sunny,
-        size: size,
-      );
+      if (isNight(time)) {
+        return BoxedIcon(
+          WeatherIcons.night_clear,
+          size: size,
+        );
+      } else {
+        return BoxedIcon(
+          WeatherIcons.day_sunny,
+          size: size,
+        );
+      }
     case 803:
     case 804:
       return BoxedIcon(

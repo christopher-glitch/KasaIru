@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intl/intl.dart';
 import 'package:kasairu/models/forecast/forecast_entry.dart';
 import 'package:kasairu/models/weather/weather_response.dart';
-import 'package:kasairu/process/util/ust_to_jst.dart';
+import 'package:kasairu/process/util/time_util.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kasairu/provider/search_provider.dart';
 import 'package:kasairu/provider/settings_provider.dart';
@@ -29,7 +28,7 @@ class WeatherUI extends ConsumerWidget {
     List<Widget> forecastList = [];
 
     forecastList.add(buildForecast(
-        DateFormat("M/d HH:mm").format(DateTime.now()),
+        DateTime.now(),
         weatherResponse.main.temp.toInt(),
         null,
         weatherResponse.rain?.amount,
@@ -119,7 +118,7 @@ class WeatherUI extends ConsumerWidget {
             ]))));
   }
 
-  Widget buildForecast(String time, int temp, int? rainChance,
+  Widget buildForecast(DateTime time, int temp, int? rainChance,
       double? rainAmount, int id, size) {
     temp -= 273;
 
@@ -130,7 +129,7 @@ class WeatherUI extends ConsumerWidget {
       child: Column(
         children: [
           Text(
-            time,
+            timeToString(time),
             style: GoogleFonts.questrial(
                 fontSize: size.height * 0.02, fontWeight: FontWeight.bold),
           ),
@@ -142,6 +141,7 @@ class WeatherUI extends ConsumerWidget {
                 ),
                 child: getWeatherIcon(
                   id,
+                  time,
                   size: size.height * 0.04,
                 ),
               ),
