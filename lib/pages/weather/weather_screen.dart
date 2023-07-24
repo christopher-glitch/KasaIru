@@ -27,7 +27,13 @@ class WeatherScreenState extends ConsumerState {
 
   Future<void> init() async {
     var serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (serviceEnabled) {
+    var permission = await Geolocator.checkPermission();
+
+    bool denied = (permission == LocationPermission.denied) ||
+        (permission == LocationPermission.deniedForever) ||
+        (permission == LocationPermission.unableToDetermine);
+
+    if (serviceEnabled && !denied) {
       final geolocator = GeolocatorPlatform.instance;
       final position = await geolocator.getCurrentPosition();
       List<double> locinit = [position.latitude, position.longitude];
@@ -83,7 +89,7 @@ class WeatherScreenState extends ConsumerState {
             ref.refresh(weatherResponseProvider);
           },
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16.0), 
+            borderRadius: BorderRadius.circular(16.0),
           ),
           backgroundColor: const Color.fromARGB(255, 213, 213, 213),
           child: const Icon(

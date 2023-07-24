@@ -72,7 +72,7 @@ class WeatherUI extends ConsumerWidget {
               result.icon,
               const SizedBox(height: 30),
               result.message,
-              const SizedBox(height: 80),
+              SizedBox(height: size.height * 0.07),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: size.width * 0.05),
                 child: Container(

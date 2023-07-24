@@ -2,19 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:geolocator/geolocator.dart';
 
 import 'pages/weather/weather_screen.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  Future(() async {
-    LocationPermission permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      await Geolocator.requestPermission();
-    }
-  });
 
   await dotenv.load(fileName: ".env");
 
