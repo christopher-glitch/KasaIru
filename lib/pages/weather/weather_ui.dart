@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kasairu/models/forecast/forecast_entry.dart';
 import 'package:kasairu/models/weather/weather_response.dart';
 import 'package:kasairu/process/util/time_util.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:kasairu/provider/search_provider.dart';
 import 'package:kasairu/provider/settings_provider.dart';
 import 'package:kasairu/process/util/forecast_icon.dart';
@@ -70,48 +69,49 @@ class WeatherUI extends ConsumerWidget {
                                   fontWeight: FontWeight.w700)))),
               const SizedBox(height: 10),
               result.icon,
-              const SizedBox(height: 30),
+              SizedBox(height: size.height * 0.02),
               result.message,
-              SizedBox(height: size.height * 0.07),
+              SizedBox(height: size.height * 0.05),
+              const Divider(
+                color: Color.fromARGB(255, 191, 191, 191),
+                thickness: 1.0,
+              ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    top: size.height * 0.005,
+                    left: size.width * 0.03,
+                  ),
+                  child: const Text(
+                    'これからの天気',
+                    style: TextStyle(
+                      fontFamily: 'M_Plus_Rounded',
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: size.height * 0.01),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: size.width * 0.05),
+                padding: EdgeInsets.symmetric(horizontal: size.width * 0.03),
                 child: Container(
                   decoration: BoxDecoration(
                     color: const Color.fromARGB(255, 213, 213, 213)
-                        .withOpacity(0.5),
+                        .withOpacity(0.3),
                     borderRadius: const BorderRadius.all(
                       Radius.circular(10),
                     ),
                   ),
-                  child: Column(
-                    children: [
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                            top: size.height * 0.01,
-                            left: size.width * 0.03,
-                          ),
-                          child: const Text(
-                            'これからの天気',
-                            style: TextStyle(
-                              fontFamily: 'M_Plus_Rounded',
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
+                  child: Padding(
+                    padding: EdgeInsets.all(size.width * 0.005),
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: forecastList,
                       ),
-                      Padding(
-                        padding: EdgeInsets.all(size.width * 0.005),
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            children: forecastList,
-                          ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ),
@@ -130,8 +130,11 @@ class WeatherUI extends ConsumerWidget {
         children: [
           Text(
             timeToString(time),
-            style: GoogleFonts.questrial(
-                fontSize: size.height * 0.02, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              fontSize: size.height * 0.02,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'M_Plus_Rounded',
+            ),
           ),
           Row(
             children: [
@@ -149,7 +152,7 @@ class WeatherUI extends ConsumerWidget {
           ),
           Text(
             '$temp°C',
-            style: GoogleFonts.questrial(
+            style: TextStyle(
               fontSize: size.height * 0.02,
             ),
           ),
@@ -170,19 +173,21 @@ class WeatherUI extends ConsumerWidget {
           if (rainChance != null)
             Text(
               '$rainChance %',
-              style: GoogleFonts.questrial(
+              style: TextStyle(
+                fontFamily: 'M_Plus_Rounded',
                 color: Colors.blue,
                 fontSize: size.height * 0.02,
               ),
             ),
           Text(
             '$amount mm',
-            style: GoogleFonts.questrial(
+            style: TextStyle(
+              fontFamily: 'M_Plus_Rounded',
               color: Colors.blue,
               fontSize: size.height * 0.017,
             ),
           ),
-          if (rainChance == null) SizedBox(height: size.height * 0.02),
+          if (rainChance == null) SizedBox(height: size.height * 0.028),
         ],
       ),
     );
