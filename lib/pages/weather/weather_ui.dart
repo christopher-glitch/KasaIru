@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:kasairu/models/forecast/forecast_entry.dart';
-import 'package:kasairu/models/weather/weather_response.dart';
+import 'package:kasairu/models/onecall/onecall_hourly.dart';
 import 'package:kasairu/process/util/time_util.dart';
 import 'package:kasairu/provider/search_provider.dart';
 import 'package:kasairu/provider/settings_provider.dart';
@@ -10,34 +9,25 @@ import 'package:kasairu/process/util/forecast_icon.dart';
 import '../../process/judge/judge_umbrella.dart';
 
 class WeatherUI extends ConsumerWidget {
-  final WeatherResponse weatherResponse;
-  final List<ForecastEntry> entry;
+  final List<OneCallHourly> entry;
+  static const limitForeCast = 24;
 
-  const WeatherUI(
-      {required this.weatherResponse, required this.entry, super.key});
+  const WeatherUI({required this.entry, super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     List<int> settingRainJudge = ref.watch(settingsProvider);
-    var result = judgeTakeUmbrella(weatherResponse, entry, settingRainJudge);
+    var result = judgeTakeUmbrella(entry, settingRainJudge);
 
     Size size = MediaQuery.of(context).size;
     String location = ref.watch(searchNameProvider);
 
     List<Widget> forecastList = [];
 
-    forecastList.add(buildForecast(
-        DateTime.now(),
-        weatherResponse.main.temp.toInt(),
-        null,
-        weatherResponse.rain?.amount,
-        weatherResponse.weather[0].id,
-        size));
-
-    for (int i = 0; i < 16; i++) {
+    for (int i = 0; i < limitForeCast; i++) {
       forecastList.add(buildForecast(
-          ustToJST(entry[i].dt),
-          entry[i].main.temp.toInt(),
+          unixToUST(entry[i].dt),
+          entry[i].temp.toInt(),
           ((entry[i].pop) * 100).toInt(),
           entry[i].rain?.amount,
           entry[i].weather[0].id,

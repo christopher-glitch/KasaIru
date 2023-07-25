@@ -43,6 +43,7 @@ dependencies:
   google_place: ^0.4.7
   flutter_dotenv: ^5.0.2
   settings_ui: ^2.0.2
+  home_widget: ^0.3.0
   flutter:
     sdk: flutter
 

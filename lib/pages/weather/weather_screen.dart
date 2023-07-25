@@ -47,8 +47,10 @@ class WeatherScreenState extends ConsumerState {
 
   @override
   Widget build(BuildContext context) {
-    final forecastResponse = ref.watch(forecastResponseProvider);
-    final weatherResponse = ref.watch(weatherResponseProvider);
+    //final forecastResponse = ref.watch(forecastResponseProvider);
+    //final weatherResponse = ref.watch(weatherResponseProvider);
+    final oneCallResponse = ref.watch(oneCallResponseProvider);
+
     if (isInitLoading) {
       return const Scaffold(
           appBar: WeatherScreenHeader(),
@@ -56,49 +58,22 @@ class WeatherScreenState extends ConsumerState {
           body: SafeArea(child: LoadingUI()));
     } else {
       return Scaffold(
-        appBar: const WeatherScreenHeader(),
-        backgroundColor: Colors.white,
-        body: SafeArea(
-            child: forecastResponse.when(
-          data: (forecast) {
-            return weatherResponse.when(
-              data: (weather) {
-                return WeatherUI(
-                    weatherResponse: weather, entry: forecast.list);
+          appBar: const WeatherScreenHeader(),
+          backgroundColor: Colors.white,
+          body: SafeArea(
+            child: oneCallResponse.when(
+              data: (onecall) {
+                return WeatherUI(entry: onecall.hourly);
               },
               loading: () {
                 return const LoadingUI();
               },
               error: (error, stackTrace) {
                 debugPrintStack(stackTrace: stackTrace);
-                return ErrorUI(error: error, cause: 'weather');
+                return ErrorUI(error: error);
               },
-            );
-          },
-          loading: () {
-            return const LoadingUI();
-          },
-          error: (error, stackTrace) {
-            debugPrintStack(stackTrace: stackTrace);
-            return ErrorUI(error: error, cause: 'forecast');
-          },
-        )),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            ref.refresh(forecastResponseProvider);
-            ref.refresh(weatherResponseProvider);
-          },
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16.0),
-          ),
-          backgroundColor: const Color.fromARGB(255, 213, 213, 213),
-          child: const Icon(
-            Icons.refresh,
-            size: 30,
-            color: Colors.black,
-          ),
-        ),
-      );
+            ),
+          ));
     }
   }
 }

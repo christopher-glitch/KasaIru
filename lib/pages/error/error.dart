@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 
 class ErrorUI extends StatelessWidget {
   final Object error;
-  final String cause;
 
-  const ErrorUI({required this.error, required this.cause, super.key});
+  const ErrorUI({required this.error, super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:kasairu/models/weather/weather_response.dart';
+import 'package:kasairu/models/onecall/onecall_hourly.dart';
 import 'package:kasairu/process/judge/result_judge.dart';
-import 'package:kasairu/models/forecast/forecast_entry.dart';
 import 'package:weather_icons/weather_icons.dart';
 
 const messageUmbrella = "傘を使う可能性があります";
 const messageNoUmbrella = "傘を使う必要はありません";
 
-ResultJudge judgeTakeUmbrella(WeatherResponse weatherResponse,
-    List<ForecastEntry> entry, List<int> settingRainJudge) {
+ResultJudge judgeTakeUmbrella(List<OneCallHourly> entry, List<int> settingRainJudge) {
   double popThreshold = settingRainJudge[0] / 100;
   int hourThreshold = settingRainJudge[1];
 
@@ -17,25 +15,15 @@ ResultJudge judgeTakeUmbrella(WeatherResponse weatherResponse,
   int cloud = 0;
   bool umbrella = false;
 
-  if (weatherResponse.rain != null) {
-    umbrella = true;
-  } else if (weatherResponse.weather[0].id == 800 ||
-      weatherResponse.weather[0].id == 801 ||
-      weatherResponse.weather[0].id == 802) {
-    sunny += 1;
-  } else {
-    cloud += 1;
-  }
-
-  for (ForecastEntry e in entry) {
-    if (e.pop >= popThreshold) {
+  for (OneCallHourly h in entry) {
+    if (h.pop >= popThreshold) {
       umbrella = true;
       break;
     }
 
-    if (e.weather[0].id == 800 ||
-        e.weather[0].id == 801 ||
-        e.weather[0].id == 802) {
+    if (h.weather[0].id == 800 ||
+        h.weather[0].id == 801 ||
+        h.weather[0].id == 802) {
       sunny += 1;
     } else {
       cloud += 1;

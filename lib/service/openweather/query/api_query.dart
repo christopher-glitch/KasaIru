@@ -2,6 +2,8 @@ class APIQuery {
   static const host = "https://api.openweathermap.org";
   static const pathForecast = "/data/2.5/forecast";
   static const pathWeather = "/data/2.5/weather";
+  static const pathOneCall = "/data/3.0/onecall";
+  static const exclude = "current,minutely,alerts";
 
   Future<String> openForecastQuery(List<double> loc) async {
     //var key = dotenv.get("OPENWEATHER_KEY");
@@ -15,6 +17,13 @@ class APIQuery {
     //var key = dotenv.get("OPENWEATHER_KEY");
     var key = const String.fromEnvironment("OPENWEATHER_KEY");
     String uri = "$host$pathWeather?lat=${loc[0]}&lon=${loc[1]}&appid=$key";
+
+    return uri;
+  }
+
+  Future<String> openOneCallQuery(List<double> loc) async {
+    var key = const String.fromEnvironment("OPENWEATHER_KEY");
+    String uri = "$host$pathOneCall?lat=${loc[0]}&lon=${loc[1]}&exclude=$exclude&appid=$key";
 
     return uri;
   }
