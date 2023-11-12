@@ -264,9 +264,8 @@ class HourDialogState extends ConsumerState {
                   validateInputHour();
                   if (!errorHour) {
                     String prob = _probability.text;
-                    ref
-                        .read(settingsProvider.notifier)
-                        .setSettingsHour(int.parse(prob));
+                    ref.read(settingsProvider.notifier)
+                      .setSettingsHour(int.parse(prob));
                     Navigator.pop(context);
                   }
                 },

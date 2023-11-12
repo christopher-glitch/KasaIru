@@ -24,25 +24,25 @@ class ListScreenState extends ConsumerState {
     final favoriteResponse = ref.watch(favoriteOCRProvider);
 
     return Scaffold(
-      appBar: const WeatherScreenHeader(),
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: favoriteResponse.when(
-          data: (fav) {
-            if(fav.isEmpty) {
+        appBar: const WeatherScreenHeader(),
+        backgroundColor: Colors.white,
+        body: SafeArea(
+          child: favoriteResponse.when(
+            data: (fav) {
+              if (fav.isEmpty) {
+                return const LoadingUI();
+              } else {
+                return ListUI(response: fav);
+              }
+            },
+            loading: () {
               return const LoadingUI();
-            }else{
-              return ListUI(response: fav);
-            }
-          },
-          loading: () {
-            return const LoadingUI();
-          },
-          error: (error, stackTrace) {
-            debugPrintStack(stackTrace: stackTrace);
-            return ErrorUI(error: error);
-          },
-        ),
-      ));
+            },
+            error: (error, stackTrace) {
+              debugPrintStack(stackTrace: stackTrace);
+              return ErrorUI(error: error);
+            },
+          ),
+        ));
   }
 }

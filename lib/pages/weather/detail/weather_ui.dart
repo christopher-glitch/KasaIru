@@ -5,6 +5,7 @@ import 'package:kasairu/models/place/place.dart';
 import 'package:kasairu/process/judge/result_judge.dart';
 import 'package:kasairu/process/util/time_util.dart';
 import 'package:kasairu/process/util/forecast_icon.dart';
+import 'package:weather_icons/weather_icons.dart';
 
 import '../../../provider/favorite_provider.dart';
 
@@ -28,11 +29,10 @@ class WeatherUIState extends ConsumerState<WeatherUI> {
 
   @override
   Widget build(BuildContext context) {
+    var favoriteList = ref.watch(favoriteProvider);
     var entry = widget.entry;
     var place = widget.place;
     var result = widget.result;
-
-    var initFavorite = ref.watch(favoriteProvider).any((element) => element == place);
 
     Size size = MediaQuery.of(context).size;
     List<Widget> forecastList = [];
@@ -47,9 +47,6 @@ class WeatherUIState extends ConsumerState<WeatherUI> {
           size));
     }
 
-    bool favoritePlace = initFavorite;
-
-    debugPrint(favoritePlace.toString());
     return (Center(
         child: Container(
             margin: const EdgeInsets.all(3),
@@ -74,27 +71,27 @@ class WeatherUIState extends ConsumerState<WeatherUI> {
                                   fontFamily: 'M_Plus_Rounded',
                                   fontWeight: FontWeight.w700)))),
               const SizedBox(height: 3),
-              IconButton(
-                icon: Icon((favoritePlace == true)
-                    ? Icons.favorite
-                    : Icons.favorite_border),
-                color: (favoritePlace == true) ? Colors.red : Colors.black38,
-                onPressed: () {
-                  debugPrint(favoritePlace.toString());
-                  setState(() {
-                    if (favoritePlace) {
-                      favoritePlace = false;
-                    } else {
-                      favoritePlace = false;           
-                    }
-                  });
-                  debugPrint(favoritePlace.toString());
-                },
-              ),
+                if (place.name != "現在地")
+                  IconButton(
+                  icon: Icon((favoriteList.contains(place))
+                      ? Icons.favorite
+                      : Icons.favorite_border),
+                  color: (favoriteList.contains(place)) ? Colors.red : Colors.black38,
+                  onPressed: () {
+                    setState(() {
+                      if (favoriteList.contains(place)) {
+                        ref.read(favoriteProvider.notifier)
+                            .removeFavorite(place);
+                      } else {
+                        ref.read(favoriteProvider.notifier).addFavorite(place);
+                      }
+                    });
+                  },
+                ),
               const SizedBox(height: 7),
-              result.icon,
+              BoxedIcon(result.icon, size: 100),
               SizedBox(height: size.height * 0.02),
-              result.message,
+              result.resultMessage(25),
               SizedBox(height: size.height * 0.05),
               const Divider(
                 color: Color.fromARGB(255, 191, 191, 191),

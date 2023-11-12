@@ -1,6 +1,5 @@
 import 'dart:collection';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kasairu/models/onecall/onecall_response.dart';
 import 'package:kasairu/models/place/place.dart';
@@ -22,18 +21,10 @@ final favoriteOCRProvider =
     FutureProvider.autoDispose<LinkedHashMap<Place, OneCallResponse>>(
         (ref) async {
   final apiClient = OpenWeatherApiClient();
-  final placeList = ref.watch(favoriteProvider);
+  final favoriteList = ref.watch(favoriteProvider);
+  final current = await ref.watch(currentProvider.future);
 
-  final current = ref.watch(currentProvider);
-
-  current.when(data: (place) {
-    placeList.insert(0, place!);
-    debugPrint(placeList.length.toString());
-  }, loading: () {
-    return {};
-  }, error: (error, StackTrace) {
-    throw Exception(error.toString());
-  });
+  var placeList = [current!, ...favoriteList];
 
   LinkedHashMap<Place, OneCallResponse> responseMap = LinkedHashMap();
   for (Place place in placeList) {

@@ -6,6 +6,7 @@ import 'package:kasairu/models/place/place.dart';
 import 'package:kasairu/process/judge/judge_umbrella.dart';
 import 'package:kasairu/process/judge/result_judge.dart';
 import 'package:kasairu/provider/settings_provider.dart';
+import 'package:weather_icons/weather_icons.dart';
 
 import '../../../process/util/forecast_icon.dart';
 import '../../../process/util/time_util.dart';
@@ -66,9 +67,13 @@ class ListUI extends ConsumerWidget {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.center,
                                       children: <Widget>[
-                                        result[index].listIcon,
+                                        BoxedIcon(result[index].icon, size: 40),
                                         Container(width: 20),
-                                        (placeList[index].name.length <= 10)
+                                        Expanded(
+                                          child:Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: <Widget> [
+                                          (placeList[index].name.length <= 10)
                                             ? Text(placeList[index].name,
                                                 style: const TextStyle(
                                                     fontSize: 22,
@@ -76,7 +81,8 @@ class ListUI extends ConsumerWidget {
                                                         'M_Plus_Rounded',
                                                     fontWeight:
                                                         FontWeight.w700))
-                                            : Flexible(
+                                            : SizedBox(
+                                                width: double.infinity,
                                                 child: SingleChildScrollView(
                                                     scrollDirection:
                                                         Axis.horizontal,
@@ -89,8 +95,10 @@ class ListUI extends ConsumerWidget {
                                                                 'M_Plus_Rounded',
                                                             fontWeight:
                                                                 FontWeight
-                                                                    .w700))))
-                                      ],
+                                                                    .w700)))),
+                                          result[index].resultMessage(18),
+                                        ])
+                                    )],
                                     ),
                                   )
                                 ])))));
