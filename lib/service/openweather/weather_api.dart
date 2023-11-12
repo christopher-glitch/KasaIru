@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 
+import 'package:kasairu/models/place/place.dart';
 import 'package:kasairu/models/onecall/onecall_response.dart';
 
 import 'package:kasairu/service/openweather/query/api_query.dart';
@@ -9,7 +10,7 @@ import 'package:http/http.dart' as http;
 
 // APIを呼び出し、データを取得する
 class OpenWeatherApiClient {
-  Future<OneCallResponse> fetchOneCall(List<double> loc) async {
+  Future<OneCallResponse> fetchOneCall(Place loc) async {
     APIQuery apiQuery = APIQuery();
     final uri = await apiQuery.openOneCallQuery(loc);
     try {

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kasairu/models/place/place.dart';
 import 'package:kasairu/pages/search/search_header.dart';
+import 'package:kasairu/pages/weather/detail/search_result_screen.dart';
 import 'package:kasairu/provider/placeapi_provider.dart';
 import 'package:kasairu/provider/prediction_provider.dart';
 import 'package:google_place/google_place.dart';
@@ -34,12 +36,12 @@ class SearchScreenState extends ConsumerState {
 
     final details = await api.getAPI().details.get(placeId, language: "ja");
     if (details != null && details.result != null && mounted) {
-      debugPrint(details.result!.name);
       var lat = details.result!.geometry!.location!.lat;
       var lng = details.result!.geometry!.location!.lng;
-      List<double> loc = [lat!, lng!];
-      ref.read(searchNameProvider.notifier).state = details.result!.name!;
-      ref.read(searchLocProvider.notifier).state = loc;
+
+      Place searchPlace =
+          Place(name: details.result!.name!, lat: lat!, lng: lng!);
+      ref.read(searchProvider.notifier).state = searchPlace;
     }
   }
 
@@ -81,10 +83,14 @@ class SearchScreenState extends ConsumerState {
                           title: Text(pred.description.toString()),
                           minLeadingWidth: 4.0,
                           onTap: () async {
-                            debugPrint('tap');
                             await _forecastSearch(pred);
                             if (!mounted) return;
-                            Navigator.pop(context);
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const SearchResultScreen()),
+                            );
                           },
                         )));
                   })),

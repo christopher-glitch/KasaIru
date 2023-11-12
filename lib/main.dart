@@ -3,8 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
-
-import 'pages/weather/weather_screen.dart';
+import 'package:kasairu/pages/weather/list/list_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,7 +31,7 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.light,
           primaryColorLight: Colors.black,
           fontFamily: 'NotoSansJP'),
-      home: const WeatherScreen(),
+      home: const ListScreen(),
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,

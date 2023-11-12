@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:kasairu/settings/settings_repository.dart';
+import 'package:kasairu/shared_preferences/settings/settings_repository.dart';
 
 class SettingsNotifier extends StateNotifier<List<int>> {
   final SettingsRepository _repository;

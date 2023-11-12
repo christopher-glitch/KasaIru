@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:kasairu/models/place/place.dart';
+
 class APIQuery {
   static const host = "https://api.openweathermap.org";
   static const pathForecast = "/data/2.5/forecast";
@@ -5,25 +8,12 @@ class APIQuery {
   static const pathOneCall = "/data/3.0/onecall";
   static const exclude = "current,minutely,alerts";
 
-  Future<String> openForecastQuery(List<double> loc) async {
-    //var key = dotenv.get("OPENWEATHER_KEY");
+  Future<String> openOneCallQuery(Place loc) async {
     var key = const String.fromEnvironment("OPENWEATHER_KEY");
-    String uri = "$host$pathForecast?lat=${loc[0]}&lon=${loc[1]}&appid=$key";
+    String uri =
+        "$host$pathOneCall?lat=${loc.lat}&lon=${loc.lng}&exclude=$exclude&appid=$key";
 
-    return uri;
-  }
-
-  Future<String> openWeatherQuery(List<double> loc) async {
-    //var key = dotenv.get("OPENWEATHER_KEY");
-    var key = const String.fromEnvironment("OPENWEATHER_KEY");
-    String uri = "$host$pathWeather?lat=${loc[0]}&lon=${loc[1]}&appid=$key";
-
-    return uri;
-  }
-
-  Future<String> openOneCallQuery(List<double> loc) async {
-    var key = const String.fromEnvironment("OPENWEATHER_KEY");
-    String uri = "$host$pathOneCall?lat=${loc[0]}&lon=${loc[1]}&exclude=$exclude&appid=$key";
+    debugPrint(uri);
 
     return uri;
   }

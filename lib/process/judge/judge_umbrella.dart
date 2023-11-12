@@ -39,6 +39,7 @@ ResultJudge judgeTakeUmbrella(List<OneCallHourly> entry, List<int> settingRainJu
   if (umbrella) {
     return ResultJudge(
         icon: const BoxedIcon(WeatherIcons.umbrella, size: 100),
+        listIcon: const BoxedIcon(WeatherIcons.umbrella, size: 40),
         message: const Text(messageUmbrella,
             style: TextStyle(
                 color: Color.fromARGB(255, 137, 9, 0),
@@ -49,21 +50,21 @@ ResultJudge judgeTakeUmbrella(List<OneCallHourly> entry, List<int> settingRainJu
     if (sunny > cloud) {
       return ResultJudge(
           icon: const BoxedIcon(WeatherIcons.day_sunny, size: 100),
+          listIcon: const BoxedIcon(WeatherIcons.day_sunny, size: 40),
           message: const Text(messageNoUmbrella,
               style: TextStyle(fontSize: 25, fontFamily: 'M_Plus_Rounded')));
       //晴れまたは曇り
     } else if (sunny == cloud) {
       return ResultJudge(
           icon: const BoxedIcon(WeatherIcons.day_sunny_overcast, size: 100),
+          listIcon: const BoxedIcon(WeatherIcons.day_sunny_overcast, size: 40),
           message: const Text(messageNoUmbrella,
               style: TextStyle(fontSize: 25, fontFamily: 'M_Plus_Rounded')));
       //曇り
     } else {
       return ResultJudge(
-          icon: const BoxedIcon(
-            WeatherIcons.cloud,
-            size: 100,
-          ),
+          icon: const BoxedIcon(WeatherIcons.cloud, size: 100),
+          listIcon: const BoxedIcon(WeatherIcons.cloud, size: 40),
           message: const Text(messageNoUmbrella,
               style: TextStyle(fontSize: 25, fontFamily: 'M_Plus_Rounded')));
     }

@@ -14,6 +14,7 @@ class WeatherScreenHeader extends StatelessWidget
     return AppBar(
       elevation: 0.5,
       backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+      iconTheme: const IconThemeData(color: Colors.black),
       centerTitle: false,
       title: const Text("KasaIru",
           style: TextStyle(

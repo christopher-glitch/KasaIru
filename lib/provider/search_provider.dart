@@ -1,8 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kasairu/models/place/place.dart';
 
-final searchNameProvider = StateProvider<String>((ref) => "東京都");
-
-final searchLocProvider = StateProvider((ref) {
-  List<double> loc = [35.6761919, 139.6503106];
-  return loc;
+final searchProvider = StateProvider<Place>((ref) {
+  Place place = const Place(name: "東京都", lat: 35.6894, lng: 139.6917);
+  return place;
 });

@@ -1,27 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kasairu/models/onecall/onecall_hourly.dart';
+import 'package:kasairu/models/place/place.dart';
+import 'package:kasairu/process/judge/result_judge.dart';
 import 'package:kasairu/process/util/time_util.dart';
-import 'package:kasairu/provider/search_provider.dart';
-import 'package:kasairu/provider/settings_provider.dart';
 import 'package:kasairu/process/util/forecast_icon.dart';
 
-import '../../process/judge/judge_umbrella.dart';
+import '../../../provider/favorite_provider.dart';
 
-class WeatherUI extends ConsumerWidget {
+class WeatherUI extends ConsumerStatefulWidget {
   final List<OneCallHourly> entry;
-  static const limitForeCast = 24;
+  final Place place;
+  final ResultJudge result;
 
-  const WeatherUI({required this.entry, super.key});
+  const WeatherUI(
+      {required this.entry,
+      required this.place,
+      required this.result,
+      super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    List<int> settingRainJudge = ref.watch(settingsProvider);
-    var result = judgeTakeUmbrella(entry, settingRainJudge);
+  WeatherUIState createState() => WeatherUIState();
+}
+
+class WeatherUIState extends ConsumerState<WeatherUI> {
+  static const limitForeCast = 24;
+
+  @override
+  Widget build(BuildContext context) {
+    var entry = widget.entry;
+    var place = widget.place;
+    var result = widget.result;
+
+    var initFavorite = ref.watch(favoriteProvider).any((element) => element == place);
 
     Size size = MediaQuery.of(context).size;
-    String location = ref.watch(searchNameProvider);
-
     List<Widget> forecastList = [];
 
     for (int i = 0; i < limitForeCast; i++) {
@@ -34,14 +47,17 @@ class WeatherUI extends ConsumerWidget {
           size));
     }
 
+    bool favoritePlace = initFavorite;
+
+    debugPrint(favoritePlace.toString());
     return (Center(
         child: Container(
             margin: const EdgeInsets.all(3),
             padding: const EdgeInsets.only(left: 8.0, right: 8.0),
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              (location.length <= 6)
-                  ? Text(location,
+              (place.name.length <= 6)
+                  ? Text(place.name,
                       style: const TextStyle(
                           fontSize: 40,
                           letterSpacing: 5,
@@ -50,14 +66,32 @@ class WeatherUI extends ConsumerWidget {
                   : Flexible(
                       child: SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
-                          child: Text(location,
+                          child: Text(place.name,
                               maxLines: 1,
                               style: const TextStyle(
                                   fontSize: 40,
                                   letterSpacing: 5,
                                   fontFamily: 'M_Plus_Rounded',
                                   fontWeight: FontWeight.w700)))),
-              const SizedBox(height: 10),
+              const SizedBox(height: 3),
+              IconButton(
+                icon: Icon((favoritePlace == true)
+                    ? Icons.favorite
+                    : Icons.favorite_border),
+                color: (favoritePlace == true) ? Colors.red : Colors.black38,
+                onPressed: () {
+                  debugPrint(favoritePlace.toString());
+                  setState(() {
+                    if (favoritePlace) {
+                      favoritePlace = false;
+                    } else {
+                      favoritePlace = false;           
+                    }
+                  });
+                  debugPrint(favoritePlace.toString());
+                },
+              ),
+              const SizedBox(height: 7),
               result.icon,
               SizedBox(height: size.height * 0.02),
               result.message,
