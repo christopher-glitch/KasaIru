@@ -50,7 +50,7 @@ class WeatherUIState extends ConsumerState<WeatherUI> {
     return (Center(
         child: Container(
             margin: const EdgeInsets.all(3),
-            padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
               (place.name.length <= 6)
@@ -71,16 +71,19 @@ class WeatherUIState extends ConsumerState<WeatherUI> {
                                   fontFamily: 'M_Plus_Rounded',
                                   fontWeight: FontWeight.w700)))),
               const SizedBox(height: 3),
-                if (place.name != "現在地")
-                  IconButton(
+              if (place.name != "現在地")
+                IconButton(
                   icon: Icon((favoriteList.contains(place))
                       ? Icons.favorite
                       : Icons.favorite_border),
-                  color: (favoriteList.contains(place)) ? Colors.red : Colors.black38,
+                  color: (favoriteList.contains(place))
+                      ? Colors.red
+                      : Colors.black38,
                   onPressed: () {
                     setState(() {
                       if (favoriteList.contains(place)) {
-                        ref.read(favoriteProvider.notifier)
+                        ref
+                            .read(favoriteProvider.notifier)
                             .removeFavorite(place);
                       } else {
                         ref.read(favoriteProvider.notifier).addFavorite(place);
@@ -114,103 +117,93 @@ class WeatherUIState extends ConsumerState<WeatherUI> {
                   ),
                 ),
               ),
-              SizedBox(height: size.height * 0.01),
+              SizedBox(height: size.height * 0.003),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: size.width * 0.03),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 213, 213, 213)
-                        .withOpacity(0.3),
-                    borderRadius: const BorderRadius.all(
-                      Radius.circular(10),
-                    ),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(size.width * 0.005),
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: forecastList,
-                      ),
+                padding: EdgeInsets.all(size.width * 0.05),
+                child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: forecastList,
                     ),
                   ),
                 ),
-              ),
             ]))));
   }
 
   Widget buildForecast(DateTime time, int temp, int? rainChance,
       double? rainAmount, int id, size) {
     temp -= 273;
-
     double amount = (rainAmount != null) ? rainAmount : 0;
 
-    return Padding(
-      padding: EdgeInsets.all(size.width * 0.025),
-      child: Column(
-        children: [
-          Text(
-            timeToString(time),
-            style: TextStyle(
-              fontSize: size.height * 0.02,
-              fontWeight: FontWeight.bold,
-              fontFamily: 'M_Plus_Rounded',
+    return SizedBox(
+        height: size.height * 0.26,
+        width: size.width * 0.40,
+        child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
             ),
-          ),
-          Row(
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  vertical: size.height * 0.005,
-                ),
-                child: getWeatherIcon(
-                  id,
-                  time,
-                  size: size.height * 0.04,
-                ),
+            color: Colors.white,
+            borderOnForeground: true,
+            elevation: 5,
+            child: Padding(
+              padding: EdgeInsets.all(size.width * 0.025),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    timeToString(time),
+                    style: TextStyle(
+                      fontSize: size.height * 0.02,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'M_Plus_Rounded',
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      vertical: size.height * 0.005,
+                    ),
+                    child: getWeatherIcon(
+                      id,
+                      time,
+                      size: size.height * 0.04,
+                    ),
+                  ),
+                  Text(
+                    '$temp°C',
+                    style: TextStyle(
+                      fontSize: size.height * 0.02,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      vertical: size.height * 0.01,
+                    ),
+                    child: Icon(
+                      Icons.water_drop,
+                      color: Colors.blue,
+                      size: size.height * 0.03,
+                    ),
+                  ),
+                  if (rainChance != null)
+                    Text(
+                      '$rainChance %',
+                      style: TextStyle(
+                        fontFamily: 'M_Plus_Rounded',
+                        color: Colors.blue,
+                        fontSize: size.height * 0.02,
+                      ),
+                    ),
+                  Text(
+                    '$amount mm',
+                    style: TextStyle(
+                      fontFamily: 'M_Plus_Rounded',
+                      color: Colors.blue,
+                      fontSize: size.height * 0.017,
+                    ),
+                  ),
+                  if (rainChance == null) SizedBox(height: size.height * 0.028),
+                ],
               ),
-            ],
-          ),
-          Text(
-            '$temp°C',
-            style: TextStyle(
-              fontSize: size.height * 0.02,
-            ),
-          ),
-          Row(
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  vertical: size.height * 0.01,
-                ),
-                child: Icon(
-                  Icons.water_drop,
-                  color: Colors.blue,
-                  size: size.height * 0.03,
-                ),
-              ),
-            ],
-          ),
-          if (rainChance != null)
-            Text(
-              '$rainChance %',
-              style: TextStyle(
-                fontFamily: 'M_Plus_Rounded',
-                color: Colors.blue,
-                fontSize: size.height * 0.02,
-              ),
-            ),
-          Text(
-            '$amount mm',
-            style: TextStyle(
-              fontFamily: 'M_Plus_Rounded',
-              color: Colors.blue,
-              fontSize: size.height * 0.017,
-            ),
-          ),
-          if (rainChance == null) SizedBox(height: size.height * 0.028),
-        ],
-      ),
-    );
+            )));
   }
 }
