@@ -18,6 +18,7 @@ class ListScreen extends ConsumerStatefulWidget {
 class ListScreenState extends ConsumerState {
   bool isInitLoading = false;
   Place? current;
+  
 
   @override
   Widget build(BuildContext context) {
