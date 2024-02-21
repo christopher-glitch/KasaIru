@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kasairu/models/onecall/onecall_response.dart';
 import 'package:kasairu/models/place/place.dart';
-import 'package:kasairu/controller/action/judge/judge_umbrella.dart';
-import 'package:kasairu/controller/action/judge/result_judge.dart';
+import 'package:kasairu/controller/function/judge/judge_umbrella.dart';
+import 'package:kasairu/controller/function/judge/result_judge.dart';
 import 'package:kasairu/controller/provider/repository/settings_provider.dart';
 import 'package:weather_icons/weather_icons.dart';
 
-import '../../../controller/action/util/forecast_icon.dart';
-import '../../../controller/action/util/time_util.dart';
+import '../../../controller/function/util/forecast_icon.dart';
+import '../../../controller/function/util/time_util.dart';
 import '../detail/detail_screen.dart';
 
 class ListUI extends ConsumerWidget {

@@ -4,9 +4,9 @@ import 'package:kasairu/models/place/place.dart';
 import 'package:kasairu/pages/loading/loading.dart';
 import 'package:kasairu/pages/weather/detail/weather_ui.dart';
 import 'package:kasairu/pages/weather/weather_header.dart';
-import 'package:kasairu/controller/provider/weather_provider.dart';
+import 'package:kasairu/controller/provider/repository/weather_provider.dart';
 
-import '../../../controller/action/judge/judge_umbrella.dart';
+import '../../../controller/function/judge/judge_umbrella.dart';
 import '../../../controller/provider/search/search_provider.dart';
 import '../../../controller/provider/repository/settings_provider.dart';
 import '../../error/error.dart';
