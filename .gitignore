@@ -56,4 +56,5 @@ macos/
 linux/
 web/
 windows/
-assets/
+
+.VSCodeCounter/
