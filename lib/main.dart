@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:kasairu/controller/action/geolocate/permission.dart';
+import 'package:kasairu/controller/function/geolocate/permission.dart';
 import 'package:kasairu/pages/weather/list/list_screen.dart';
 
 void main() async {
