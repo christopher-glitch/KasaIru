@@ -8,7 +8,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kasairu/pages/settings/settings_header.dart';
 import 'package:settings_ui/settings_ui.dart';
 
-import '../../provider/settings_provider.dart';
+import '../../controller/provider/repository/settings_provider.dart';
 
 class SettingsScreen extends ConsumerStatefulWidget {
   const SettingsScreen({super.key});

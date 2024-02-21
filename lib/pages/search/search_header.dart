@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:kasairu/provider/placeapi_provider.dart';
-import 'package:kasairu/provider/prediction_provider.dart';
+import 'package:kasairu/controller/provider/search/placeapi_provider.dart';
+import 'package:kasairu/controller/provider/search/prediction_provider.dart';
 
 class SearchScreenHeader extends ConsumerStatefulWidget
     implements PreferredSizeWidget {

@@ -3,10 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kasairu/models/place/place.dart';
 import 'package:kasairu/pages/search/search_header.dart';
 import 'package:kasairu/pages/weather/detail/search_result_screen.dart';
-import 'package:kasairu/provider/placeapi_provider.dart';
-import 'package:kasairu/provider/prediction_provider.dart';
+import 'package:kasairu/controller/provider/search/placeapi_provider.dart';
+import 'package:kasairu/controller/provider/search/prediction_provider.dart';
 import 'package:google_place/google_place.dart';
-import 'package:kasairu/provider/search_provider.dart';
+import 'package:kasairu/controller/provider/search/search_provider.dart';
 
 class SearchScreen extends ConsumerStatefulWidget {
   const SearchScreen({super.key});

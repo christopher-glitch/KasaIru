@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kasairu/models/place/place.dart';
 import 'package:kasairu/pages/loading/loading.dart';
 import 'package:kasairu/pages/weather/weather_header.dart';
-import 'package:kasairu/provider/weather_provider.dart';
+import 'package:kasairu/controller/provider/weather_provider.dart';
 
 import '../../error/error.dart';
 import 'list_ui.dart';

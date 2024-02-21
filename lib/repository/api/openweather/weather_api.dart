@@ -4,8 +4,7 @@ import 'dart:convert';
 
 import 'package:kasairu/models/place/place.dart';
 import 'package:kasairu/models/onecall/onecall_response.dart';
-
-import 'package:kasairu/service/openweather/query/api_query.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 // APIを呼び出し、データを取得する
@@ -24,5 +23,21 @@ class OpenWeatherApiClient {
     } catch (error) {
       throw Exception(error.toString());
     }
+  }
+}
+
+class APIQuery {
+  static const host = "https://api.openweathermap.org";
+  static const pathOneCall = "/data/3.0/onecall";
+  static const exclude = "current,minutely,alerts";
+
+  Future<String> openOneCallQuery(Place loc) async {
+    var key = const String.fromEnvironment("OPENWEATHER_KEY");
+    String uri =
+        "$host$pathOneCall?lat=${loc.lat}&lon=${loc.lng}&exclude=$exclude&appid=$key";
+
+    debugPrint(uri);
+
+    return uri;
   }
 }
