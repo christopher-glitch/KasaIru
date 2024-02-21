@@ -33,12 +33,10 @@ class SearchScreenState extends ConsumerState {
   Future<void> _forecastSearch(AutocompletePrediction pred) async {
     final placeId = pred.placeId!;
     final api = ref.watch(placeAPIProvider);
-
-    final details = await api.getAPI().details.get(placeId, language: "ja");
+    final details = await api.getSearchPlace(placeId);
     if (details != null && details.result != null && mounted) {
       var lat = details.result!.geometry!.location!.lat;
       var lng = details.result!.geometry!.location!.lng;
-
       Place searchPlace =
           Place(name: details.result!.name!, lat: lat!, lng: lng!);
       ref.read(searchProvider.notifier).state = searchPlace;

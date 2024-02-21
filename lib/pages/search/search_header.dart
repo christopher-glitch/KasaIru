@@ -22,8 +22,8 @@ class SearchScreenHeaderState extends ConsumerState {
   Timer? debounce;
 
   void _autocomplete(text) async {
-    var api = ref.watch(placeAPIProvider);
-    var result = await api.getAPI().autocomplete.get(text);
+    final api = ref.watch(placeAPIProvider);
+    final result = await api.getAutoComplete(text);
     if (result != null && result.predictions != null && mounted) {
       ref.read(predictionProvider.notifier).state = result.predictions!;
     }
