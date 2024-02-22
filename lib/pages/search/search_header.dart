@@ -1,8 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:kasairu/controller/provider/search/placeapi_provider.dart';
-import 'package:kasairu/controller/provider/search/prediction_provider.dart';
+
+import '../../Controller/provider/search/placeapi_provider.dart';
+import '../../Controller/provider/search/prediction_provider.dart';
 
 class SearchScreenHeader extends ConsumerStatefulWidget
     implements PreferredSizeWidget {
@@ -22,10 +23,10 @@ class SearchScreenHeaderState extends ConsumerState {
   Timer? debounce;
 
   void _autocomplete(text) async {
-    final api = ref.watch(placeAPIProvider);
-    final result = await api.getAutoComplete(text);
+    var api = ref.watch(placeAPIProvider);
+    var result = await api.getAPI().autocomplete.get(text);
     if (result != null && result.predictions != null && mounted) {
-      ref.read(predictionProvider.notifier).state = result.predictions!;
+      ref.read(predictionProvider.notifier).setPrediction(result.predictions!);
     }
   }
 

@@ -1,5 +1,6 @@
 import 'dart:collection';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kasairu/controller/function/geolocate/current_location.dart';
 import 'package:kasairu/models/onecall/onecall_response.dart';
@@ -27,7 +28,8 @@ final favoriteOCRProvider =
   } else {
     placeList = [...favoriteList];
   }
-
+  debugPrint(placeList.length.toString());
+  
   LinkedHashMap<Place, OneCallResponse> responseMap = LinkedHashMap();
   for (Place place in placeList) {
     responseMap[place] = await fetchOneCall(place);
