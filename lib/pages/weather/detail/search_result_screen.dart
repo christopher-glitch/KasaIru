@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kasairu/models/place/place.dart';
 import 'package:kasairu/pages/loading/loading.dart';
 import 'package:kasairu/pages/weather/detail/weather_ui.dart';
-import 'package:kasairu/pages/weather/weather_header.dart';
+import 'package:kasairu/pages/weather/detail/detail_header.dart';
 import 'package:kasairu/controller/provider/repository/weather_provider.dart';
 
 import '../../../controller/function/judge/judge_umbrella.dart';
@@ -25,7 +25,7 @@ class SearchResultScreenState extends ConsumerState {
     final oneCallResponse = ref.watch(searchOCRProvider);
 
     return Scaffold(
-          appBar: const WeatherScreenHeader(),
+          appBar: const DetailScreenHeader(),
           backgroundColor: Colors.white,
           body: SafeArea(
             child: oneCallResponse.when(
