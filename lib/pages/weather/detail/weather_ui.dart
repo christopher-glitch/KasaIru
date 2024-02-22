@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kasairu/models/onecall/onecall_hourly.dart';
 import 'package:kasairu/models/place/place.dart';
-import 'package:kasairu/process/judge/result_judge.dart';
-import 'package:kasairu/process/util/time_util.dart';
-import 'package:kasairu/process/util/forecast_icon.dart';
+import 'package:kasairu/controller/function/judge/result_judge.dart';
+import 'package:kasairu/controller/function/util/time_util.dart';
+import 'package:kasairu/controller/function/util/forecast_icon.dart';
 import 'package:weather_icons/weather_icons.dart';
 
-import '../../../provider/favorite_provider.dart';
+import '../../../controller/provider/repository/favorite_provider.dart';
 
 class WeatherUI extends ConsumerStatefulWidget {
   final List<OneCallHourly> entry;

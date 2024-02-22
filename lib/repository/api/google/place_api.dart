@@ -11,4 +11,12 @@ class PlaceAPIClient {
   GooglePlace getAPI() {
     return googlePlace;
   }
+
+  Future<AutocompleteResponse?> getAutoComplete(String text) async {
+    return await googlePlace.autocomplete.get(text);
+  }
+
+  Future<DetailsResponse?> getSearchPlace(String placeID) async {
+    return await googlePlace.details.get(placeID, language: "ja");
+  }
 }

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
 
-import '../models/place/place.dart';
+import '../../models/place/place.dart';
 
 final currentProvider = FutureProvider.autoDispose<Place?>((ref) async {
   var serviceEnabled = await Geolocator.isLocationServiceEnabled();

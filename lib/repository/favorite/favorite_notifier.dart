@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kasairu/models/place/place.dart';
-import 'package:kasairu/shared_preferences/favorite/favorite_repository.dart';
+import 'package:kasairu/repository/favorite/favorite_repository.dart';
 
 class FavoriteNotifier extends StateNotifier<List<Place>> {
   final FavoriteRepository _repository;

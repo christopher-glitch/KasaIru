@@ -1,4 +1,4 @@
-import 'package:kasairu/process/util/time_util.dart';
+import 'package:kasairu/controller/function/util/time_util.dart';
 import 'package:weather_icons/weather_icons.dart';
 
 BoxedIcon getWeatherIcon(int id, DateTime time, {double size = 100}) {

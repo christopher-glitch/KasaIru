@@ -1,5 +1,5 @@
 import 'package:kasairu/models/onecall/onecall_hourly.dart';
-import 'package:kasairu/process/judge/result_judge.dart';
+import 'package:kasairu/controller/function/judge/result_judge.dart';
 import 'package:weather_icons/weather_icons.dart';
 
 const messageUmbrella = "傘を使う可能性があります";
