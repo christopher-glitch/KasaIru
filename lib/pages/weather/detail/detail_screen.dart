@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kasairu/models/place/place.dart';
 import 'package:kasairu/pages/weather/detail/weather_ui.dart';
-import 'package:kasairu/pages/weather/weather_header.dart';
+import 'package:kasairu/pages/weather/detail/detail_header.dart';
 
 import '../../../models/onecall/onecall_hourly.dart';
 import '../../../controller/function/judge/result_judge.dart';
@@ -21,7 +21,7 @@ class DetailScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-        appBar: const WeatherScreenHeader(),
+        appBar: const DetailScreenHeader(),
         backgroundColor: Colors.white,
         body: SafeArea(
           child: WeatherUI(
