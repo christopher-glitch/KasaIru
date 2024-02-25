@@ -6,12 +6,14 @@ part of 'onecall_rain.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_RainInfoOneCall _$$_RainInfoOneCallFromJson(Map<String, dynamic> json) =>
-    _$_RainInfoOneCall(
+_$RainInfoOneCallImpl _$$RainInfoOneCallImplFromJson(
+        Map<String, dynamic> json) =>
+    _$RainInfoOneCallImpl(
       amount: (json['1h'] as num).toDouble(),
     );
 
-Map<String, dynamic> _$$_RainInfoOneCallToJson(_$_RainInfoOneCall instance) =>
+Map<String, dynamic> _$$RainInfoOneCallImplToJson(
+        _$RainInfoOneCallImpl instance) =>
     <String, dynamic>{
       '1h': instance.amount,
     };

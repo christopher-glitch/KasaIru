@@ -12,7 +12,7 @@ part of 'onecall_response.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 OneCallResponse _$OneCallResponseFromJson(Map<String, dynamic> json) {
   return _OneCallResponse.fromJson(json);
@@ -62,22 +62,22 @@ class _$OneCallResponseCopyWithImpl<$Res, $Val extends OneCallResponse>
 }
 
 /// @nodoc
-abstract class _$$_OneCallResponseCopyWith<$Res>
+abstract class _$$OneCallResponseImplCopyWith<$Res>
     implements $OneCallResponseCopyWith<$Res> {
-  factory _$$_OneCallResponseCopyWith(
-          _$_OneCallResponse value, $Res Function(_$_OneCallResponse) then) =
-      __$$_OneCallResponseCopyWithImpl<$Res>;
+  factory _$$OneCallResponseImplCopyWith(_$OneCallResponseImpl value,
+          $Res Function(_$OneCallResponseImpl) then) =
+      __$$OneCallResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<OneCallHourly> hourly});
 }
 
 /// @nodoc
-class __$$_OneCallResponseCopyWithImpl<$Res>
-    extends _$OneCallResponseCopyWithImpl<$Res, _$_OneCallResponse>
-    implements _$$_OneCallResponseCopyWith<$Res> {
-  __$$_OneCallResponseCopyWithImpl(
-      _$_OneCallResponse _value, $Res Function(_$_OneCallResponse) _then)
+class __$$OneCallResponseImplCopyWithImpl<$Res>
+    extends _$OneCallResponseCopyWithImpl<$Res, _$OneCallResponseImpl>
+    implements _$$OneCallResponseImplCopyWith<$Res> {
+  __$$OneCallResponseImplCopyWithImpl(
+      _$OneCallResponseImpl _value, $Res Function(_$OneCallResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -85,7 +85,7 @@ class __$$_OneCallResponseCopyWithImpl<$Res>
   $Res call({
     Object? hourly = null,
   }) {
-    return _then(_$_OneCallResponse(
+    return _then(_$OneCallResponseImpl(
       hourly: null == hourly
           ? _value._hourly
           : hourly // ignore: cast_nullable_to_non_nullable
@@ -96,12 +96,12 @@ class __$$_OneCallResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_OneCallResponse implements _OneCallResponse {
-  const _$_OneCallResponse({required final List<OneCallHourly> hourly})
+class _$OneCallResponseImpl implements _OneCallResponse {
+  const _$OneCallResponseImpl({required final List<OneCallHourly> hourly})
       : _hourly = hourly;
 
-  factory _$_OneCallResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_OneCallResponseFromJson(json);
+  factory _$OneCallResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OneCallResponseImplFromJson(json);
 
   final List<OneCallHourly> _hourly;
   @override
@@ -117,10 +117,10 @@ class _$_OneCallResponse implements _OneCallResponse {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OneCallResponse &&
+            other is _$OneCallResponseImpl &&
             const DeepCollectionEquality().equals(other._hourly, _hourly));
   }
 
@@ -132,12 +132,13 @@ class _$_OneCallResponse implements _OneCallResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OneCallResponseCopyWith<_$_OneCallResponse> get copyWith =>
-      __$$_OneCallResponseCopyWithImpl<_$_OneCallResponse>(this, _$identity);
+  _$$OneCallResponseImplCopyWith<_$OneCallResponseImpl> get copyWith =>
+      __$$OneCallResponseImplCopyWithImpl<_$OneCallResponseImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_OneCallResponseToJson(
+    return _$$OneCallResponseImplToJson(
       this,
     );
   }
@@ -145,15 +146,15 @@ class _$_OneCallResponse implements _OneCallResponse {
 
 abstract class _OneCallResponse implements OneCallResponse {
   const factory _OneCallResponse({required final List<OneCallHourly> hourly}) =
-      _$_OneCallResponse;
+      _$OneCallResponseImpl;
 
   factory _OneCallResponse.fromJson(Map<String, dynamic> json) =
-      _$_OneCallResponse.fromJson;
+      _$OneCallResponseImpl.fromJson;
 
   @override
   List<OneCallHourly> get hourly;
   @override
   @JsonKey(ignore: true)
-  _$$_OneCallResponseCopyWith<_$_OneCallResponse> get copyWith =>
+  _$$OneCallResponseImplCopyWith<_$OneCallResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

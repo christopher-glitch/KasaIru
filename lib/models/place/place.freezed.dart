@@ -12,7 +12,7 @@ part of 'place.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Place _$PlaceFromJson(Map<String, dynamic> json) {
   return _Place.fromJson(json);
@@ -72,18 +72,21 @@ class _$PlaceCopyWithImpl<$Res, $Val extends Place>
 }
 
 /// @nodoc
-abstract class _$$_PlaceCopyWith<$Res> implements $PlaceCopyWith<$Res> {
-  factory _$$_PlaceCopyWith(_$_Place value, $Res Function(_$_Place) then) =
-      __$$_PlaceCopyWithImpl<$Res>;
+abstract class _$$PlaceImplCopyWith<$Res> implements $PlaceCopyWith<$Res> {
+  factory _$$PlaceImplCopyWith(
+          _$PlaceImpl value, $Res Function(_$PlaceImpl) then) =
+      __$$PlaceImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String name, double lat, double lng});
 }
 
 /// @nodoc
-class __$$_PlaceCopyWithImpl<$Res> extends _$PlaceCopyWithImpl<$Res, _$_Place>
-    implements _$$_PlaceCopyWith<$Res> {
-  __$$_PlaceCopyWithImpl(_$_Place _value, $Res Function(_$_Place) _then)
+class __$$PlaceImplCopyWithImpl<$Res>
+    extends _$PlaceCopyWithImpl<$Res, _$PlaceImpl>
+    implements _$$PlaceImplCopyWith<$Res> {
+  __$$PlaceImplCopyWithImpl(
+      _$PlaceImpl _value, $Res Function(_$PlaceImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -93,7 +96,7 @@ class __$$_PlaceCopyWithImpl<$Res> extends _$PlaceCopyWithImpl<$Res, _$_Place>
     Object? lat = null,
     Object? lng = null,
   }) {
-    return _then(_$_Place(
+    return _then(_$PlaceImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -112,11 +115,11 @@ class __$$_PlaceCopyWithImpl<$Res> extends _$PlaceCopyWithImpl<$Res, _$_Place>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Place implements _Place {
-  const _$_Place({required this.name, required this.lat, required this.lng});
+class _$PlaceImpl implements _Place {
+  const _$PlaceImpl({required this.name, required this.lat, required this.lng});
 
-  factory _$_Place.fromJson(Map<String, dynamic> json) =>
-      _$$_PlaceFromJson(json);
+  factory _$PlaceImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PlaceImplFromJson(json);
 
   @override
   final String name;
@@ -131,10 +134,10 @@ class _$_Place implements _Place {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Place &&
+            other is _$PlaceImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.lat, lat) || other.lat == lat) &&
             (identical(other.lng, lng) || other.lng == lng));
@@ -147,12 +150,12 @@ class _$_Place implements _Place {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PlaceCopyWith<_$_Place> get copyWith =>
-      __$$_PlaceCopyWithImpl<_$_Place>(this, _$identity);
+  _$$PlaceImplCopyWith<_$PlaceImpl> get copyWith =>
+      __$$PlaceImplCopyWithImpl<_$PlaceImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PlaceToJson(
+    return _$$PlaceImplToJson(
       this,
     );
   }
@@ -162,9 +165,9 @@ abstract class _Place implements Place {
   const factory _Place(
       {required final String name,
       required final double lat,
-      required final double lng}) = _$_Place;
+      required final double lng}) = _$PlaceImpl;
 
-  factory _Place.fromJson(Map<String, dynamic> json) = _$_Place.fromJson;
+  factory _Place.fromJson(Map<String, dynamic> json) = _$PlaceImpl.fromJson;
 
   @override
   String get name;
@@ -174,6 +177,6 @@ abstract class _Place implements Place {
   double get lng;
   @override
   @JsonKey(ignore: true)
-  _$$_PlaceCopyWith<_$_Place> get copyWith =>
+  _$$PlaceImplCopyWith<_$PlaceImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

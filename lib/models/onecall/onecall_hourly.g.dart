@@ -6,8 +6,8 @@ part of 'onecall_hourly.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_OneCallHourly _$$_OneCallHourlyFromJson(Map<String, dynamic> json) =>
-    _$_OneCallHourly(
+_$OneCallHourlyImpl _$$OneCallHourlyImplFromJson(Map<String, dynamic> json) =>
+    _$OneCallHourlyImpl(
       dt: json['dt'] as int,
       temp: (json['temp'] as num).toDouble(),
       uvi: (json['uvi'] as num).toDouble(),
@@ -20,7 +20,7 @@ _$_OneCallHourly _$$_OneCallHourlyFromJson(Map<String, dynamic> json) =>
           : RainInfoOneCall.fromJson(json['rain'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_OneCallHourlyToJson(_$_OneCallHourly instance) =>
+Map<String, dynamic> _$$OneCallHourlyImplToJson(_$OneCallHourlyImpl instance) =>
     <String, dynamic>{
       'dt': instance.dt,
       'temp': instance.temp,

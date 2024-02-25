@@ -12,7 +12,7 @@ part of 'onecall_rain.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 RainInfoOneCall _$RainInfoOneCallFromJson(Map<String, dynamic> json) {
   return _RainInfoOneCall.fromJson(json);
@@ -63,22 +63,22 @@ class _$RainInfoOneCallCopyWithImpl<$Res, $Val extends RainInfoOneCall>
 }
 
 /// @nodoc
-abstract class _$$_RainInfoOneCallCopyWith<$Res>
+abstract class _$$RainInfoOneCallImplCopyWith<$Res>
     implements $RainInfoOneCallCopyWith<$Res> {
-  factory _$$_RainInfoOneCallCopyWith(
-          _$_RainInfoOneCall value, $Res Function(_$_RainInfoOneCall) then) =
-      __$$_RainInfoOneCallCopyWithImpl<$Res>;
+  factory _$$RainInfoOneCallImplCopyWith(_$RainInfoOneCallImpl value,
+          $Res Function(_$RainInfoOneCallImpl) then) =
+      __$$RainInfoOneCallImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@JsonKey(name: '1h') double amount});
 }
 
 /// @nodoc
-class __$$_RainInfoOneCallCopyWithImpl<$Res>
-    extends _$RainInfoOneCallCopyWithImpl<$Res, _$_RainInfoOneCall>
-    implements _$$_RainInfoOneCallCopyWith<$Res> {
-  __$$_RainInfoOneCallCopyWithImpl(
-      _$_RainInfoOneCall _value, $Res Function(_$_RainInfoOneCall) _then)
+class __$$RainInfoOneCallImplCopyWithImpl<$Res>
+    extends _$RainInfoOneCallCopyWithImpl<$Res, _$RainInfoOneCallImpl>
+    implements _$$RainInfoOneCallImplCopyWith<$Res> {
+  __$$RainInfoOneCallImplCopyWithImpl(
+      _$RainInfoOneCallImpl _value, $Res Function(_$RainInfoOneCallImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -86,7 +86,7 @@ class __$$_RainInfoOneCallCopyWithImpl<$Res>
   $Res call({
     Object? amount = null,
   }) {
-    return _then(_$_RainInfoOneCall(
+    return _then(_$RainInfoOneCallImpl(
       amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
@@ -97,11 +97,11 @@ class __$$_RainInfoOneCallCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_RainInfoOneCall implements _RainInfoOneCall {
-  const _$_RainInfoOneCall({@JsonKey(name: '1h') required this.amount});
+class _$RainInfoOneCallImpl implements _RainInfoOneCall {
+  const _$RainInfoOneCallImpl({@JsonKey(name: '1h') required this.amount});
 
-  factory _$_RainInfoOneCall.fromJson(Map<String, dynamic> json) =>
-      _$$_RainInfoOneCallFromJson(json);
+  factory _$RainInfoOneCallImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RainInfoOneCallImplFromJson(json);
 
   @override
   @JsonKey(name: '1h')
@@ -113,10 +113,10 @@ class _$_RainInfoOneCall implements _RainInfoOneCall {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RainInfoOneCall &&
+            other is _$RainInfoOneCallImpl &&
             (identical(other.amount, amount) || other.amount == amount));
   }
 
@@ -127,12 +127,13 @@ class _$_RainInfoOneCall implements _RainInfoOneCall {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RainInfoOneCallCopyWith<_$_RainInfoOneCall> get copyWith =>
-      __$$_RainInfoOneCallCopyWithImpl<_$_RainInfoOneCall>(this, _$identity);
+  _$$RainInfoOneCallImplCopyWith<_$RainInfoOneCallImpl> get copyWith =>
+      __$$RainInfoOneCallImplCopyWithImpl<_$RainInfoOneCallImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RainInfoOneCallToJson(
+    return _$$RainInfoOneCallImplToJson(
       this,
     );
   }
@@ -140,16 +141,17 @@ class _$_RainInfoOneCall implements _RainInfoOneCall {
 
 abstract class _RainInfoOneCall implements RainInfoOneCall {
   const factory _RainInfoOneCall(
-      {@JsonKey(name: '1h') required final double amount}) = _$_RainInfoOneCall;
+          {@JsonKey(name: '1h') required final double amount}) =
+      _$RainInfoOneCallImpl;
 
   factory _RainInfoOneCall.fromJson(Map<String, dynamic> json) =
-      _$_RainInfoOneCall.fromJson;
+      _$RainInfoOneCallImpl.fromJson;
 
   @override
   @JsonKey(name: '1h')
   double get amount;
   @override
   @JsonKey(ignore: true)
-  _$$_RainInfoOneCallCopyWith<_$_RainInfoOneCall> get copyWith =>
+  _$$RainInfoOneCallImplCopyWith<_$RainInfoOneCallImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
