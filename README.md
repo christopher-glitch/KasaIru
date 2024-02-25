@@ -2,6 +2,8 @@
 
 傘の必要性に特化したモバイルアプリケーション
 
+![fig1](https://github.com/christopher-glitch/KasaIru/assets/72238672/85f3d558-b7a8-48cf-9872-4612f682f5cc)
+
 ## 対応OS
 
 * Android
@@ -18,3 +20,7 @@
 * Flutter(Dart)
 * Google Places API
 * Open Weather API
+
+## 構成
+
+![fig2](https://github.com/christopher-glitch/KasaIru/assets/72238672/2ef66ba6-c81b-45e1-975d-fdedbedb52a0)
