@@ -5,7 +5,7 @@ import 'package:kasairu/pages/weather/detail/weather_ui.dart';
 import 'package:kasairu/pages/weather/detail/detail_header.dart';
 
 import '../../../models/onecall/onecall_hourly.dart';
-import '../../../controller/function/judge/result_judge.dart';
+import '../../../controller/service/judge/result_judge.dart';
 
 class DetailScreen extends ConsumerWidget {
   final List<OneCallHourly> entry;
@@ -28,6 +28,7 @@ class DetailScreen extends ConsumerWidget {
                 entry: entry,
                 place: place,
                 result: result,
+                favorite: true,
               ),
           ));
   }

@@ -39,7 +39,8 @@ class SearchScreenState extends ConsumerState {
       var lng = details.result!.geometry!.location!.lng;
       Place searchPlace =
           Place(name: details.result!.name!, lat: lat!, lng: lng!);
-      ref.read(searchProvider.notifier).state = searchPlace;
+      ref.read(predictionProvider.notifier).reset();
+      ref.read(searchProvider.notifier).setSearchPlace(searchPlace);
     }
   }
 

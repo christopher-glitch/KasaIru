@@ -3,13 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kasairu/models/onecall/onecall_response.dart';
 import 'package:kasairu/models/place/place.dart';
-import 'package:kasairu/controller/function/judge/judge_umbrella.dart';
-import 'package:kasairu/controller/function/judge/result_judge.dart';
+import 'package:kasairu/controller/service/judge/judge_umbrella.dart';
+import 'package:kasairu/controller/service/judge/result_judge.dart';
 import 'package:kasairu/controller/provider/repository/settings_provider.dart';
 import 'package:weather_icons/weather_icons.dart';
-
-import '../../../controller/function/util/forecast_icon.dart';
-import '../../../controller/function/util/time_util.dart';
 import '../detail/detail_screen.dart';
 
 class ListUI extends ConsumerWidget {
@@ -106,80 +103,5 @@ class ListUI extends ConsumerWidget {
           separatorBuilder: (BuildContext context, int index) =>
               const Divider(),
         )));
-  }
-
-  Widget buildForecast(DateTime time, int temp, int? rainChance,
-      double? rainAmount, int id, size) {
-    temp -= 273;
-
-    double amount = (rainAmount != null) ? rainAmount : 0;
-
-    return Padding(
-      padding: EdgeInsets.all(size.width * 0.025),
-      child: Column(
-        children: [
-          Text(
-            timeToString(time),
-            style: TextStyle(
-              fontSize: size.height * 0.02,
-              fontWeight: FontWeight.bold,
-              fontFamily: 'M_Plus_Rounded',
-            ),
-          ),
-          Row(
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  vertical: size.height * 0.005,
-                ),
-                child: getWeatherIcon(
-                  id,
-                  time,
-                  size: size.height * 0.04,
-                ),
-              ),
-            ],
-          ),
-          Text(
-            '$temp°C',
-            style: TextStyle(
-              fontSize: size.height * 0.02,
-            ),
-          ),
-          Row(
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  vertical: size.height * 0.01,
-                ),
-                child: Icon(
-                  Icons.water_drop,
-                  color: Colors.blue,
-                  size: size.height * 0.03,
-                ),
-              ),
-            ],
-          ),
-          if (rainChance != null)
-            Text(
-              '$rainChance %',
-              style: TextStyle(
-                fontFamily: 'M_Plus_Rounded',
-                color: Colors.blue,
-                fontSize: size.height * 0.02,
-              ),
-            ),
-          Text(
-            '$amount mm',
-            style: TextStyle(
-              fontFamily: 'M_Plus_Rounded',
-              color: Colors.blue,
-              fontSize: size.height * 0.017,
-            ),
-          ),
-          if (rainChance == null) SizedBox(height: size.height * 0.028),
-        ],
-      ),
-    );
   }
 }

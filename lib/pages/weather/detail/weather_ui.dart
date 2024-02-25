@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kasairu/models/onecall/onecall_hourly.dart';
 import 'package:kasairu/models/place/place.dart';
-import 'package:kasairu/controller/function/judge/result_judge.dart';
-import 'package:kasairu/controller/function/util/time_util.dart';
-import 'package:kasairu/controller/function/util/forecast_icon.dart';
+import 'package:kasairu/controller/service/judge/result_judge.dart';
+import 'package:kasairu/controller/service/util/time_util.dart';
+import 'package:kasairu/controller/service/util/forecast_icon.dart';
 import 'package:weather_icons/weather_icons.dart';
 
 import '../../../controller/provider/repository/favorite_provider.dart';
@@ -13,11 +13,13 @@ class WeatherUI extends ConsumerStatefulWidget {
   final List<OneCallHourly> entry;
   final Place place;
   final ResultJudge result;
+  final bool favorite;
 
   const WeatherUI(
       {required this.entry,
       required this.place,
       required this.result,
+      required this.favorite,
       super.key});
 
   @override
@@ -26,14 +28,23 @@ class WeatherUI extends ConsumerStatefulWidget {
 
 class WeatherUIState extends ConsumerState<WeatherUI> {
   static const limitForeCast = 24;
+  
+  late List<OneCallHourly> entry;
+  late Place place;
+  late ResultJudge result;
+  late bool favorite;
+
+  @override
+  void initState() {
+    super.initState();
+    entry = widget.entry;
+    place = widget.place;
+    result = widget.result;
+  }
 
   @override
   Widget build(BuildContext context) {
-    var favoriteList = ref.watch(favoriteProvider);
-    var entry = widget.entry;
-    var place = widget.place;
-    var result = widget.result;
-
+    favorite = widget.favorite;
     Size size = MediaQuery.of(context).size;
     List<Widget> forecastList = [];
 
@@ -73,15 +84,15 @@ class WeatherUIState extends ConsumerState<WeatherUI> {
               const SizedBox(height: 3),
               if (place.name != "現在地")
                 IconButton(
-                  icon: Icon((favoriteList.contains(place))
+                  icon: Icon((favorite)
                       ? Icons.favorite
                       : Icons.favorite_border),
-                  color: (favoriteList.contains(place))
+                  color: (favorite)
                       ? Colors.red
                       : Colors.black38,
                   onPressed: () {
                     setState(() {
-                      if (favoriteList.contains(place)) {
+                      if (favorite) {
                         ref
                             .read(favoriteProvider.notifier)
                             .removeFavorite(place);
@@ -121,12 +132,12 @@ class WeatherUIState extends ConsumerState<WeatherUI> {
               Padding(
                 padding: EdgeInsets.all(size.width * 0.05),
                 child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: forecastList,
-                    ),
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: forecastList,
                   ),
                 ),
+              ),
             ]))));
   }
 

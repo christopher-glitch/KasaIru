@@ -25,7 +25,7 @@ class SearchScreenHeaderState extends ConsumerState {
     final api = ref.watch(placeAPIProvider);
     final result = await api.getAutoComplete(text);
     if (result != null && result.predictions != null && mounted) {
-      ref.read(predictionProvider.notifier).state = result.predictions!;
+      ref.read(predictionProvider.notifier).setPredition(result.predictions!);
     }
   }
 
@@ -48,7 +48,7 @@ class SearchScreenHeaderState extends ConsumerState {
                 size: 30,
               ),
               onPressed: () {
-                setState(() {
+              setState(() {
                   _searchController.clear();
                 });
               },
