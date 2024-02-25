@@ -4,7 +4,6 @@ class PlaceAPIClient {
   late GooglePlace googlePlace;
 
   PlaceAPIClient() {
-    //googlePlace = GooglePlace(dotenv.get("GOOGLE_API"));
     googlePlace = GooglePlace(const String.fromEnvironment("GOOGLE_API"));
   }
 

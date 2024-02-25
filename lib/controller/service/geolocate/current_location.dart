@@ -3,6 +3,13 @@ import 'package:geolocator/geolocator.dart';
 
 import '../../../models/place/place.dart';
 
+Future<void> checkGeolocatorPermission() async {
+  LocationPermission permission = await Geolocator.checkPermission();
+  if (permission == LocationPermission.denied) {
+    await Geolocator.requestPermission();
+  }
+}
+
 Future<Place?> currentLocation() async {
   var serviceEnabled = await Geolocator.isLocationServiceEnabled();
   var permission = await Geolocator.checkPermission();
