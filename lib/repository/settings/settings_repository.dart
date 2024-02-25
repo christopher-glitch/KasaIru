@@ -26,6 +26,4 @@ class SettingsRepository {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setInt(_keyHourThreshold, value);
   }
-
-  getFavorite() {}
 }
