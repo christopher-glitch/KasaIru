@@ -12,7 +12,7 @@ part of 'onecall_hourly.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 OneCallHourly _$OneCallHourlyFromJson(Map<String, dynamic> json) {
   return _OneCallHourly.fromJson(json);
@@ -112,11 +112,11 @@ class _$OneCallHourlyCopyWithImpl<$Res, $Val extends OneCallHourly>
 }
 
 /// @nodoc
-abstract class _$$_OneCallHourlyCopyWith<$Res>
+abstract class _$$OneCallHourlyImplCopyWith<$Res>
     implements $OneCallHourlyCopyWith<$Res> {
-  factory _$$_OneCallHourlyCopyWith(
-          _$_OneCallHourly value, $Res Function(_$_OneCallHourly) then) =
-      __$$_OneCallHourlyCopyWithImpl<$Res>;
+  factory _$$OneCallHourlyImplCopyWith(
+          _$OneCallHourlyImpl value, $Res Function(_$OneCallHourlyImpl) then) =
+      __$$OneCallHourlyImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -132,11 +132,11 @@ abstract class _$$_OneCallHourlyCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_OneCallHourlyCopyWithImpl<$Res>
-    extends _$OneCallHourlyCopyWithImpl<$Res, _$_OneCallHourly>
-    implements _$$_OneCallHourlyCopyWith<$Res> {
-  __$$_OneCallHourlyCopyWithImpl(
-      _$_OneCallHourly _value, $Res Function(_$_OneCallHourly) _then)
+class __$$OneCallHourlyImplCopyWithImpl<$Res>
+    extends _$OneCallHourlyCopyWithImpl<$Res, _$OneCallHourlyImpl>
+    implements _$$OneCallHourlyImplCopyWith<$Res> {
+  __$$OneCallHourlyImplCopyWithImpl(
+      _$OneCallHourlyImpl _value, $Res Function(_$OneCallHourlyImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -149,7 +149,7 @@ class __$$_OneCallHourlyCopyWithImpl<$Res>
     Object? weather = null,
     Object? rain = freezed,
   }) {
-    return _then(_$_OneCallHourly(
+    return _then(_$OneCallHourlyImpl(
       dt: null == dt
           ? _value.dt
           : dt // ignore: cast_nullable_to_non_nullable
@@ -180,8 +180,8 @@ class __$$_OneCallHourlyCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_OneCallHourly implements _OneCallHourly {
-  const _$_OneCallHourly(
+class _$OneCallHourlyImpl implements _OneCallHourly {
+  const _$OneCallHourlyImpl(
       {required this.dt,
       required this.temp,
       required this.uvi,
@@ -190,8 +190,8 @@ class _$_OneCallHourly implements _OneCallHourly {
       required this.rain})
       : _weather = weather;
 
-  factory _$_OneCallHourly.fromJson(Map<String, dynamic> json) =>
-      _$$_OneCallHourlyFromJson(json);
+  factory _$OneCallHourlyImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OneCallHourlyImplFromJson(json);
 
   @override
   final int dt;
@@ -219,10 +219,10 @@ class _$_OneCallHourly implements _OneCallHourly {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OneCallHourly &&
+            other is _$OneCallHourlyImpl &&
             (identical(other.dt, dt) || other.dt == dt) &&
             (identical(other.temp, temp) || other.temp == temp) &&
             (identical(other.uvi, uvi) || other.uvi == uvi) &&
@@ -239,12 +239,12 @@ class _$_OneCallHourly implements _OneCallHourly {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OneCallHourlyCopyWith<_$_OneCallHourly> get copyWith =>
-      __$$_OneCallHourlyCopyWithImpl<_$_OneCallHourly>(this, _$identity);
+  _$$OneCallHourlyImplCopyWith<_$OneCallHourlyImpl> get copyWith =>
+      __$$OneCallHourlyImplCopyWithImpl<_$OneCallHourlyImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_OneCallHourlyToJson(
+    return _$$OneCallHourlyImplToJson(
       this,
     );
   }
@@ -257,10 +257,10 @@ abstract class _OneCallHourly implements OneCallHourly {
       required final double uvi,
       required final double pop,
       required final List<WeatherInfo> weather,
-      required final RainInfoOneCall? rain}) = _$_OneCallHourly;
+      required final RainInfoOneCall? rain}) = _$OneCallHourlyImpl;
 
   factory _OneCallHourly.fromJson(Map<String, dynamic> json) =
-      _$_OneCallHourly.fromJson;
+      _$OneCallHourlyImpl.fromJson;
 
   @override
   int get dt;
@@ -276,6 +276,6 @@ abstract class _OneCallHourly implements OneCallHourly {
   RainInfoOneCall? get rain;
   @override
   @JsonKey(ignore: true)
-  _$$_OneCallHourlyCopyWith<_$_OneCallHourly> get copyWith =>
+  _$$OneCallHourlyImplCopyWith<_$OneCallHourlyImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
