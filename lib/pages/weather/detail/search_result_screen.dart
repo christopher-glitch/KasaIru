@@ -36,7 +36,6 @@ class SearchResultScreenState extends ConsumerState {
               Place place = ref.watch(searchProvider);
               List<Place> favoriteList = ref.watch(favoriteProvider);
 
-
               ResultJudge result = judgeTakeUmbrella(onecall.hourly, settingRainJudge);
               return WeatherUI(
                   entry: onecall.hourly, 
