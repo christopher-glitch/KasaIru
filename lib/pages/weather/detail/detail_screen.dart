@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kasairu/controller/provider/repository/favorite_provider.dart';
 import 'package:kasairu/models/place/place.dart';
 import 'package:kasairu/pages/weather/detail/weather_ui.dart';
 import 'package:kasairu/pages/weather/detail/detail_header.dart';
@@ -20,6 +21,8 @@ class DetailScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    List<Place> favoriteList = ref.watch(favoriteProvider);
+    
     return Scaffold(
         appBar: const DetailScreenHeader(),
         backgroundColor: Colors.white,
@@ -28,7 +31,7 @@ class DetailScreen extends ConsumerWidget {
                 entry: entry,
                 place: place,
                 result: result,
-                favorite: true,
+                favorite: favoriteList.contains(place),
               ),
           ));
   }
