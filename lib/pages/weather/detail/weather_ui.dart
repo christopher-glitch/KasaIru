@@ -39,12 +39,12 @@ class WeatherUIState extends ConsumerState<WeatherUI> {
     super.initState();
     entry = widget.entry;
     place = widget.place;
-    result = widget.result;
   }
 
   @override
   Widget build(BuildContext context) {
     favorite = widget.favorite;
+    result = widget.result;
     Size size = MediaQuery.of(context).size;
     List<Widget> forecastList = [];
 
