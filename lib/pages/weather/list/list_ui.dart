@@ -42,7 +42,6 @@ class ListUI extends ConsumerWidget {
                             builder: (context) => DetailScreen(
                                   entry: responseList[index].hourly,
                                   place: placeList[index], 
-                                  result: result[index],
                                 )),
                       );
                     },
